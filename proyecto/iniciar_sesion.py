@@ -46,11 +46,11 @@ class IniciarSesion():
         with open('data.json', 'r') as f:
             data = json.load(f)
 
-        for usuario in data['usuarios']:
-            if usuario['nombre_usuario'] == nombre_usuario and usuario['contrasena'] == contraseña:
-                print("Inicio de sesión correcto")
-                
-        print("Nombre de usuario o contraseña incorrectos.")
+        try:
+            usuario = next(user for user in data['usuarios'] if user['nombre_usuario'] == nombre_usuario and user['contrasena'] == contraseña)
+            print("Inicio de sesión correcto")
+        except StopIteration:
+            print("Inicio de sesión incorrecto")
         self.ventana.destroy()
         EntornoUsuario(nombre_usuario)
         

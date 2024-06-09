@@ -59,6 +59,7 @@ class ConfirmarRechazarRegistro:
         }
 
         contenido_json["usuarios"].append(nuevo_contenido)
+        contenido_json[nombre] = {}
 
         # Escribir el contenido actualizado en el archivo JSON
         with open('data.json', 'w') as archivo:

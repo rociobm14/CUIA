@@ -4,5 +4,78 @@
             "nombre_usuario": "rocio",
             "contrasena": "holaquetal"
         }
-    ]
+    ],
+    "rocio": {
+        "animes_favoritos": [
+            {
+                "nombre": "Neon Genesis Evangelion",
+                "imagen": "imagenes/evangelion.jpeg",
+                "wikipedia_url": "https://es.wikipedia.org/wiki/Neon_Genesis_Evangelion#Argumento",
+                "personajes": [
+                    {
+                        "key": "Shinji",
+                        "nombre": "Shinji Ikari",
+                        "imagen": "imagenes/shinji.jpeg"
+                    },
+                    {
+                        "key": "Ayanami",
+                        "nombre": "Rei Ayanami",
+                        "imagen": "imagenes/rei.jpeg"
+                    }
+                ]
+            }
+        ],
+        "personajes_favoritos": [
+            {
+                "key": "Ackerman",
+                "nombre": "Mikasa Ackerman",
+                "imagen": "imagenes/mikasa.jpeg"
+            },
+            {
+                "key": "Edward",
+                "nombre": "Edward Elric",
+                "imagen": "imagenes/edward.jpeg"
+            },
+            {
+                "key": "Alphonse",
+                "nombre": "Alphonse Elric",
+                "imagen": "imagenes/alphonse.jpeg"
+            },
+            {
+                "key": "Tanjiro",
+                "nombre": "Tanjiro Kamado",
+                "imagen": "imagenes/tanjiro.jpeg"
+            },
+            {
+                "key": "Nezuko",
+                "nombre": "Nezuko Kamado",
+                "imagen": "imagenes/nezuko.jpeg"
+            },
+            {
+                "key": "Light",
+                "nombre": "Light Yagami",
+                "imagen": "imagenes/light.jpeg"
+            }
+
+        ],
+        "animes_vistos": [
+            {
+                "nombre": "Neon Genesis Evangelion",
+                "imagen": "imagenes/evangelion.jpeg",
+                "wikipedia_url": "https://es.wikipedia.org/wiki/Neon_Genesis_Evangelion#Argumento",
+                "personajes": [
+                    {
+                        "key": "Shinji",
+                        "nombre": "Shinji Ikari",
+                        "imagen": "imagenes/shinji.jpeg"
+                    },
+                    {
+                        "key": "Ayanami",
+                        "nombre": "Rei Ayanami",
+                        "imagen": "imagenes/rei.jpeg"
+                    }
+                ]
+            }
+        ]
+    }
 }
