@@ -1,60 +1,56 @@
 import cv2
 from confirmar_rechazar import ConfirmarRechazarRegistro
+import camara as cam
 
 class RegistroFacial:
     def __init__(self, n, c):
         self.nombre_usuario = n
         self.contraseña = c
-        
         self.capturar_rostro()
-        
+
     def capturar_rostro(self):
-         # Crear un objeto de captura de video
         captura = cv2.VideoCapture(0)  # 0 para la cámara predeterminada
 
-        # Configurar la fuente, tipo de letra y tamaño para el contador
-        fuente = cv2.FONT_HERSHEY_SIMPLEX
-        posicion_contador = (400, 50)
-        tamaño_fuente = 1
-        color_contador = (0, 255, 0)
+        if captura.isOpened():
+            # Obtenemos el tamaño del frame
+            hframe = int(captura.get(cv2.CAP_PROP_FRAME_HEIGHT))
+            wframe = int(captura.get(cv2.CAP_PROP_FRAME_WIDTH))
+            print("Tamaño del frame de la cámara: ", wframe, "x", hframe)
 
-        # Dar nombre a la ventana
-        name_window = "Camara"
-        cv2.namedWindow(name_window)
+            # Obtenemos la matriz de la cámara
+            self.matrix, self.roi = cv2.getOptimalNewCameraMatrix(cam.cameraMatrix, cam.distCoeffs, (wframe, hframe), 1, (wframe, hframe))
+            self.roi_x, self.roi_y, self.roi_w, self.roi_h = self.roi
 
-        # Inicializar el contador
-        contador = 10
 
-        while True:
-            # Leer la imagen de la cámara
-            ret, imagen = captura.read()
+            name_window = "Camara"
+            cv2.namedWindow(name_window)
 
-            # Mostrar el contador en la imagen
-            if (contador > 0):
-                cv2.putText(imagen, str(contador), posicion_contador, fuente, tamaño_fuente, color_contador, 2)
+            while True:
+                ret, imagen = captura.read()
 
-            # Mostrar la imagen
-            cv2.imshow('Camara', imagen)
+                if ret:
+                    # Rectificamos la imagen de la cámara
+                    imagen_rectificada = cv2.undistort(imagen, cam.cameraMatrix, cam.distCoeffs, None, self.matrix)
+                    imagen_recortada = imagen_rectificada[self.roi_y:self.roi_y + self.roi_h, self.roi_x:self.roi_x + self.roi_w]
 
-            # Esperar 1 segundo y restar 1 al contador
-            if cv2.waitKey(1000) == ord('q') or contador == 0:
-                break
-            contador -= 1
+                    cv2.imshow('Camara', imagen_recortada)
 
-        # Verificar si se alcanzó el contador cero
-        if contador == 0:
-            # Guardar la imagen en un archivo
-            nombre_imagen = "carasUsuarios/" + self.nombre_usuario + ".jpg"
-            cv2.imwrite(nombre_imagen, imagen)
-            print("¡Foto guardada correctamente!")
-            cv2.destroyWindow(name_window)
-            ConfirmarRechazarRegistro(self.nombre_usuario, self.contraseña)
+                    key = cv2.waitKey(1) & 0xFF
+                    if key == ord('c'):  # Presionar 'c' para capturar
+                        nombre_imagen = "carasUsuarios/" + self.nombre_usuario + ".jpg"
+                        cv2.imwrite(nombre_imagen, imagen_recortada)
+                        print("¡Foto guardada correctamente!")
+                        cv2.destroyWindow(name_window)
+                        ConfirmarRechazarRegistro(self.nombre_usuario, self.contraseña)
+                        break
+                    elif key == ord('q'):  # Presionar 'q' para salir
+                        print("Captura cancelada.")
+                        break
+                else:
+                    break
 
+            captura.release()
+            cv2.destroyAllWindows()
         else:
-            print("Captura cancelada.")
-
-        # Liberar la cámara y cerrar la ventana
-        captura.release()
-        cv2.destroyAllWindows()
-        
-        
+            print("No se pudo acceder a la cámara.")
+            cv2.destroyAllWindows()

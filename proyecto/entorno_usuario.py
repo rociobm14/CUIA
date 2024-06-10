@@ -84,7 +84,7 @@ class EntornoUsuario():
             boton_info = tk.Button(anime_frame, text="Ver información", command=lambda anime=anime: self.ver_informacion(anime))
             boton_info.pack(pady=10)
             
-        thread.Thread(target=self.voice_recognition, daemon=True).start()
+        #thread.Thread(target=self.voice_recognition, daemon=True).start()
             
         self.ventana.mainloop()
          
@@ -342,7 +342,7 @@ class InformacionAnime():
                     label_nombre_personaje = tk.Label(personaje_frame, text=personaje['nombre'], font=("Arial", 12))
                     label_nombre_personaje.pack()
                     
-        thread.Thread(target=self.voice_recognition, daemon=True).start()
+        #thread.Thread(target=self.voice_recognition, daemon=True).start()
                     
         self.ventana.mainloop()
         
@@ -518,7 +518,7 @@ class AnimesFavoritos():
             label_nombre = tk.Label(anime_frame, text=anime['nombre'], font=("Arial", 16))
             label_nombre.pack()
             
-        thread.Thread(target=self.voice_recognition, daemon=True).start()
+        #thread.Thread(target=self.voice_recognition, daemon=True).start()
 
         self.ventana.mainloop()
         
@@ -674,7 +674,7 @@ class PersonajesFavoritos():
             label_nombre = tk.Label(anime_frame, text=anime['nombre'], font=("Arial", 16))
             label_nombre.pack()
             
-        thread.Thread(target=self.voice_recognition, daemon=True).start()
+        #thread.Thread(target=self.voice_recognition, daemon=True).start()
 
         self.ventana.mainloop()
         

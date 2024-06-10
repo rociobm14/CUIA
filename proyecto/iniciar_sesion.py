@@ -36,7 +36,7 @@ class IniciarSesion():
         boton_enviar.place(relx = 0.5, rely = 0.8, anchor = tk.CENTER)
         
         #Reconocimiento facial
-        boton_reconocimiento_facial = tk.Button(self.ventana, text="Reconocimiento facial", command=lambda:self.reconocimiento_facial(), **button_style)
+        boton_reconocimiento_facial = tk.Button(self.ventana, text="Reconocimiento facial", command=lambda:self.reconocimiento_facial(self.nombre_usuario), **button_style)
         boton_reconocimiento_facial.place(relx = 0.5, rely = 0.9, anchor = tk.CENTER)
         
     def comprobar_credenciales(self, nombre_usuario, contraseña):
@@ -54,13 +54,26 @@ class IniciarSesion():
         self.ventana.destroy()
         EntornoUsuario(nombre_usuario)
         
-    def reconocimiento_facial(self):
-        self.ventana.destroy()
+    def reconocimiento_facial(self, nombre_usuario):
         reconocimiento = ReconocimientoFacial()
-        reconocimiento.reconocer_caras("carasUsuarios/")
+        reconocimiento.cargar_imagenes_referencia("carasUsuarios/")
+    
         
-         # Cargar la configuración
-        #reconocimiento.cargar_configuracion("data.json")
+         #Cargar la configuración
+        reconocimiento.cargar_configuracion("data.json")
+        
+        nombre = reconocimiento.reconocer_caras()
+        
+        if nombre is not None:
+            self.ventana.destroy()
+            EntornoUsuario(nombre)
+            
+        else:
+            print("No se ha detectado al usuario, introduce manualmente las credenciales")
+            
+            
+        
+        
 
         
         

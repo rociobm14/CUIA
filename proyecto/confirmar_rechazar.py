@@ -1,6 +1,6 @@
 import tkinter as tk
 import json
-from PIL import Image
+from PIL import Image, ImageTk
 import registro_facial
 import pagina_inicio
 import os
@@ -11,37 +11,43 @@ class ConfirmarRechazarRegistro:
         self.contraseña = c
         
         self.ventana = tk.Tk()
-        self.ventana.geometry("10000x10000") # establecemos las dimensiones principales de la pantalla
-        self.ventana.title("Your Anime realm") # título de mi app
+        self.ventana.geometry("800x600")  # Establecemos dimensiones más razonables para la pantalla
+        self.ventana.title("Your Anime Realm")  # Título de la app
         
-        #cargamos la imagen del usuario
+        # Cargamos la imagen del usuario
         ruta_imagen = "carasUsuarios/" + self.nombre_usuario + ".jpg"
         
-        # abrimos imagen
-        Image.open(ruta_imagen)
+        # Abrimos imagen
+        imagen = Image.open(ruta_imagen)
+        imagen = imagen.resize((600, 400), Image.LANCZOS)  # Redimensionar la imagen si es necesario
+        imagen_tk = ImageTk.PhotoImage(imagen)
         
+        # Crear un widget Label para la imagen
+        label_imagen = tk.Label(self.ventana, image=imagen_tk)
+        label_imagen.image = imagen_tk  # Necesario para evitar que la imagen sea recogida por el recolector de basura
+        label_imagen.place(relx=0.5, rely=0.3, anchor=tk.CENTER)
         
-         # Crear un widget Label para la confirmación
-        titulo_label = tk.Label(self.ventana, text="Do you wan to use this photo?", font=("Arial", 20, "bold"), bg="gray", fg="white", border=0)
-        titulo_label.place(relx = 0.5, rely = 0.5, anchor = tk.CENTER)
+        # Crear un widget Label para la confirmación
+        titulo_label = tk.Label(self.ventana, text="Do you want to use this photo?", font=("Arial", 20, "bold"), bg="gray", fg="white", border=0)
+        titulo_label.place(relx=0.5, rely=0.7, anchor=tk.CENTER)
 
         # Estilo para los botones sin bordes
         button_style = {"fg": "white", "bg": "gray", "border": 0, "font": ("Arial", 20, "bold")}
 
         # Crear un widget Button para aceptar la foto
         boton_aceptar = tk.Button(self.ventana, text="Yes", command=lambda:self.aceptar(self.nombre_usuario, self.contraseña), **button_style)
-        boton_aceptar.place(relx = 0.3, rely = 0.75, anchor = tk.CENTER)
+        boton_aceptar.place(relx = 0.3, rely = 0.9, anchor = tk.CENTER)
 
         # Crear un widget Button para rechazar la foto
         boton_rechazar = tk.Button(self.ventana, text="No", command=lambda:self.rechazar(self.nombre_usuario, self.contraseña), **button_style)
-        boton_rechazar.place(relx = 0.7, rely = 0.75, anchor = tk.CENTER)
+        boton_rechazar.place(relx = 0.7, rely = 0.9, anchor = tk.CENTER)
 
         self.ventana.mainloop()
 
     def rechazar(self, nombre, contraseña):
         # Eliminar la foto
         self.ventana.destroy()
-        os.remove("faces/" + nombre + ".jpg")
+        os.remove("carasUsuarios/" + nombre + ".jpg")
         registro_facial.RegistroFacial(nombre, contraseña)
     
     def aceptar(self, nombre, contraseña):
