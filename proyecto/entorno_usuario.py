@@ -16,25 +16,25 @@ class EntornoUsuario():
         self.threading = True
 
         # Prueba para mostrar que se ha metido en el usuario correctamente
-        nombre_usuario_label = tk.Label(self.ventana, text=f"Bienvenido/a : {self.nombre_usuario}", font=("Arial", 20, "bold"))
+        nombre_usuario_label = tk.Label(self.ventana, text=f"Bienvenido/a : {self.nombre_usuario}", font=("Arial", 20, "bold"), bg="pink")
         nombre_usuario_label.pack(side=tk.TOP, pady=10)
         
         # Crear el frame del menú a la izquierda
-        menu_frame = tk.Frame(self.ventana, width=300, bg='grey')
+        menu_frame = tk.Frame(self.ventana, width=300, bg='white')
         menu_frame.pack(side=tk.LEFT, fill=tk.Y)
 
         # Crear los botones del menú
         
-        boton_pagina_principal = tk.Button(menu_frame, text="Coleccion de animes", bg="blue")
+        boton_pagina_principal = tk.Button(menu_frame, text="Coleccion de animes", bg="yellow")
         boton_pagina_principal.pack(pady=10)
         
-        boton_personajes_favoritos = tk.Button(menu_frame, text="Personajes favoritos" , command=lambda:self.personajes_favoritos(self.nombre_usuario))
+        boton_personajes_favoritos = tk.Button(menu_frame, text="Personajes favoritos" , bg="pink", command=lambda:self.personajes_favoritos(self.nombre_usuario))
         boton_personajes_favoritos.pack(pady=10)
 
-        boton_series_favoritas = tk.Button(menu_frame, text="Animes favoritos", command=lambda:self.animes_favoritos(self.nombre_usuario))
+        boton_series_favoritas = tk.Button(menu_frame, text="Animes favoritos", bg="pink", command=lambda:self.animes_favoritos(self.nombre_usuario))
         boton_series_favoritas.pack(pady=10)
 
-        boton_series_vistas = tk.Button(menu_frame, text="Animes vistos", command=lambda:self.animes_vistos(self.nombre_usuario))
+        boton_series_vistas = tk.Button(menu_frame, text="Animes vistos", bg="pink", command=lambda:self.animes_vistos(self.nombre_usuario))
         boton_series_vistas.pack(pady=10)
 
         # Crear un frame principal que contendrá el canvas y el scrollbar
@@ -84,39 +84,10 @@ class EntornoUsuario():
             boton_info = tk.Button(anime_frame, text="Ver información", command=lambda anime=anime: self.ver_informacion(anime))
             boton_info.pack(pady=10)
             
-        #thread.Thread(target=self.voice_recognition, daemon=True).start()
+        thread.Thread(target=self.voice_recognition, daemon=True).start()
             
         self.ventana.mainloop()
-         
-    def ver_informacion(self, anime):
-        self.threading = False
-        print("Finalizando hilo")
-        self.ventana.destroy()
-        InformacionAnime(self.nombre_usuario, anime)
         
-    #nos aseguramos de que el hilo que maneje es el hilo principal, ya que por comando de voz se crea un nuevo hilo
-    #y la interfaz tkinter no está preparada para manejarse con muchos hilos  
-    def animes_favoritos_command(self, nombre_usuario):
-        self.ventana.after(0, lambda: self.animes_favoritos(nombre_usuario))
-        
-    def animes_favoritos(self, nombre_usuario):
-        self.threading = False
-        print("Finalizando hilo")
-        self.ventana.destroy()
-        AnimesFavoritos(nombre_usuario)
-        
-    def personajes_favoritos(self, nombre_usuario):
-        self.threading = False
-        print("Finalizando hilo")
-        self.ventana.destroy()
-        PersonajesFavoritos(nombre_usuario)
-        
-    def animes_vistos(self, nombre_usuario):
-        self.threading = False
-        print("Finalizando hilo")
-        self.ventana.destroy()
-        AnimesVistos(nombre_usuario)
-          
     def voice_recognition(self):
         recognizer = sr.Recognizer()
         mic = sr.Microphone()
@@ -139,15 +110,63 @@ class EntornoUsuario():
                     anime_name = " ".join(words[1:])
                     self.add_to_watched(anime_name)
                     
+                elif words[0] == "información":
+                    anime_name = " ".join(words[1:])
+                    self.ver_informacion_command(anime_name)
+                    
                 #Scrollear en las distintas
                 elif command.lower() == "animes favoritos":
                     self.animes_favoritos_command(self.nombre_usuario)
-                    break
+                    
+                elif command.lower() == "personajes favoritos":
+                    self.personajes_favoritos_command(self.nombre_usuario)
+                    
+                elif command.lower() == "animes vistos":
+                    self.animes_vistos_command(self.nombre_usuario)
             except sr.UnknownValueError:
                 print("No se entendió el comando")
             except sr.RequestError as e:
                 print(f"Error con el servicio de reconocimiento de voz; {e}")
-                
+       
+    def ver_informacion_command(self, anime_name):
+        anime = self.find_anime(anime_name)
+        self.ventana.after(0, lambda: self.ver_informacion(anime))  
+        
+    def ver_informacion(self, anime):
+        self.threading = False
+        print("Finalizando hilo")
+        self.ventana.destroy()
+        InformacionAnime(self.nombre_usuario, anime)
+        
+    #nos aseguramos de que el hilo que maneje es el hilo principal, ya que por comando de voz se crea un nuevo hilo
+    #y la interfaz tkinter no está preparada para manejarse con muchos hilos  
+    def animes_favoritos_command(self, nombre_usuario):
+        self.ventana.after(0, lambda: self.animes_favoritos(nombre_usuario))
+        
+    def animes_favoritos(self, nombre_usuario):
+        self.threading = False
+        print("Finalizando hilo")
+        self.ventana.destroy()
+        AnimesFavoritos(nombre_usuario)
+        
+    def personajes_favoritos_command(self, nombre_usuario):
+        self.ventana.after(0, lambda: self.personajes_favoritos(nombre_usuario))
+        
+    def personajes_favoritos(self, nombre_usuario):
+        self.threading = False
+        print("Finalizando hilo")
+        self.ventana.destroy()
+        PersonajesFavoritos(nombre_usuario)
+        
+    def animes_vistos_command(self, nombre_usuario):
+        self.ventana.after(0, lambda: self.animes_vistos(nombre_usuario))
+        
+    def animes_vistos(self, nombre_usuario):
+        self.threading = False
+        print("Finalizando hilo")
+        self.ventana.destroy()
+        AnimesVistos(nombre_usuario)
+                  
     def add_to_favorites(self, anime_name):
         anime = self.find_anime(anime_name)
         print("el anime es", anime)
@@ -221,16 +240,14 @@ class EntornoUsuario():
         confirmation_window.title("Confirmación")
         confirmation_label = tk.Label(confirmation_window, text=f"{anime_name} ha sido añadido a tus favoritos", font=("Arial", 16))
         confirmation_label.pack(pady=20)
-        ok_button = tk.Button(confirmation_window, text="OK", command=confirmation_window.destroy)
-        ok_button.pack(pady=10)
+        confirmation_window.after(3000, confirmation_window.destroy)
         
     def show_confirmation_watched(self, anime_name):
         confirmation_window = tk.Toplevel(self.ventana)
         confirmation_window.title("Confirmación")
         confirmation_label = tk.Label(confirmation_window, text=f"{anime_name} ha sido añadido a tus vistos", font=("Arial", 16))
         confirmation_label.pack(pady=20)
-        ok_button = tk.Button(confirmation_window, text="OK", command=confirmation_window.destroy)
-        ok_button.pack(pady=10)
+        confirmation_window.after(3000, confirmation_window.destroy)
         
 
 class InformacionAnime():
@@ -245,25 +262,25 @@ class InformacionAnime():
         self.threading = True
         
         # Prueba para mostrar que se ha metido en el usuario correctamente
-        nombre_usuario_label = tk.Label(self.ventana, text=f"Información de {self.anime['nombre']}", font=("Arial", 20, "bold"))
+        nombre_usuario_label = tk.Label(self.ventana, text=f"Información de {self.anime['nombre'].lower()}", font=("Arial", 20, "bold"), bg="pink")
         nombre_usuario_label.pack(side=tk.TOP, pady=10)
         
         # Crear el frame del menú a la izquierda
-        menu_frame = tk.Frame(self.ventana, width=300, bg='grey')
+        menu_frame = tk.Frame(self.ventana, width=300, bg='white')
         menu_frame.pack(side=tk.LEFT, fill=tk.Y)
         
         # Crear los botones del menú
         
-        boton_pagina_principal = tk.Button(menu_frame, text="Coleccion de animes", command=lambda:self.pagina_principal(self.nombre_usuario))
+        boton_pagina_principal = tk.Button(menu_frame, text="Coleccion de animes", bg="pink", command=lambda:self.pagina_principal(self.nombre_usuario))
         boton_pagina_principal.pack(pady=10)
         
-        boton_personajes_favoritos = tk.Button(menu_frame, text="Personajes favoritos" , command=lambda:self.personajes_favoritos(self.nombre_usuario))
+        boton_personajes_favoritos = tk.Button(menu_frame, text="Personajes favoritos" , bg="pink", command=lambda:self.personajes_favoritos(self.nombre_usuario))
         boton_personajes_favoritos.pack(pady=10)
 
-        boton_series_favoritas = tk.Button(menu_frame, text="Animes Favoritos", command=lambda:self.animes_favoritos(self.nombre_usuario))
+        boton_series_favoritas = tk.Button(menu_frame, text="Animes Favoritos", bg="pink", command=lambda:self.animes_favoritos(self.nombre_usuario))
         boton_series_favoritas.pack(pady=10)
 
-        boton_series_vistas = tk.Button(menu_frame, text="Series vistas" , command=lambda:self.animes_vistos(self.nombre_usuario))
+        boton_series_vistas = tk.Button(menu_frame, text="Series vistas" , bg="pink", command=lambda:self.animes_vistos(self.nombre_usuario))
         boton_series_vistas.pack(pady=10)
         
          # Crear un frame principal que contendrá el canvas y el scrollbar
@@ -342,7 +359,7 @@ class InformacionAnime():
                     label_nombre_personaje = tk.Label(personaje_frame, text=personaje['nombre'], font=("Arial", 12))
                     label_nombre_personaje.pack()
                     
-        #thread.Thread(target=self.voice_recognition, daemon=True).start()
+        thread.Thread(target=self.voice_recognition, daemon=True).start()
                     
         self.ventana.mainloop()
         
@@ -363,11 +380,27 @@ class InformacionAnime():
                 if words[0] == "favorito":
                     character = " ".join(words[1:])
                     self.add_to_favorites(character)
+                
+                #Scrollear en las distintas
+                elif command.lower() == "página principal":
+                    self.pagina_principal_command(self.nombre_usuario)
+                    
+                elif command.lower() == "animes favoritos":
+                    self.animes_favoritos_command(self.nombre_usuario)
+                    
+                elif command.lower() == "personajes favoritos":
+                    self.personajes_favoritos_command(self.nombre_usuario)
+                    
+                elif command.lower() == "animes vistos":
+                    self.animes_vistos_command(self.nombre_usuario)
                     
             except sr.UnknownValueError:
                 print("No se entendió el comando")
             except sr.RequestError as e:
                 print(f"Error con el servicio de reconocimiento de voz; {e}")
+                
+    def pagina_principal_command(self, nombre_usuario):
+        self.ventana.after(0, lambda: self.pagina_principal(nombre_usuario))
                 
     def pagina_principal(self, nombre_usuario):
         self.threading = False
@@ -375,17 +408,26 @@ class InformacionAnime():
         self.ventana.destroy()
         EntornoUsuario(nombre_usuario)
                 
+    def animes_favoritos_command(self, nombre_usuario):
+        self.ventana.after(0, lambda: self.animes_favoritos(nombre_usuario))
+        
     def animes_favoritos(self, nombre_usuario):
         self.threading = False
         print("Finalizando hilo")
         self.ventana.destroy()
         AnimesFavoritos(nombre_usuario)
         
+    def personajes_favoritos_command(self, nombre_usuario):
+        self.ventana.after(0, lambda: self.personajes_favoritos(nombre_usuario))
+        
     def personajes_favoritos(self, nombre_usuario):
         self.threading = False
         print("Finalizando hilo")
         self.ventana.destroy()
         PersonajesFavoritos(nombre_usuario)
+        
+    def animes_vistos_command(self, nombre_usuario):
+        self.ventana.after(0, lambda: self.animes_vistos(nombre_usuario))
         
     def animes_vistos(self, nombre_usuario):
         self.threading = False
@@ -436,8 +478,7 @@ class InformacionAnime():
         confirmation_window.title("Confirmación")
         confirmation_label = tk.Label(confirmation_window, text=f"{character_name} ha sido añadido a tus personajes favoritos", font=("Arial", 16))
         confirmation_label.pack(pady=20)
-        ok_button = tk.Button(confirmation_window, text="OK", command=confirmation_window.destroy)
-        ok_button.pack(pady=10)
+        confirmation_window.after(3000, confirmation_window.destroy)
                     
     
                         
@@ -454,25 +495,25 @@ class AnimesFavoritos():
         self.threading = True
 
         # Prueba para mostrar que se ha metido en el usuario correctamente
-        nombre_usuario_label = tk.Label(self.ventana, text=f"Animes favoritos de : {self.nombre_usuario}", font=("Arial", 20, "bold"))
+        nombre_usuario_label = tk.Label(self.ventana, text=f"Animes favoritos de : {self.nombre_usuario}", font=("Arial", 20, "bold"), bg="pink")
         nombre_usuario_label.pack(side=tk.TOP, pady=10)
         
         # Crear el frame del menú a la izquierda
-        menu_frame = tk.Frame(self.ventana, width=300, bg='grey')
+        menu_frame = tk.Frame(self.ventana, width=300, bg='white')
         menu_frame.pack(side=tk.LEFT, fill=tk.Y)
 
         # Crear los botones del menú
         
-        boton_pagina_principal = tk.Button(menu_frame, text="Coleccion de animes", command=lambda:self.pagina_principal(self.nombre_usuario))
+        boton_pagina_principal = tk.Button(menu_frame, text="Coleccion de animes", bg="pink", command=lambda:self.pagina_principal(self.nombre_usuario))
         boton_pagina_principal.pack(pady=10)
         
-        boton_personajes_favoritos = tk.Button(menu_frame, text="Personajes favoritos" , command=lambda:self.personajes_favoritos(self.nombre_usuario))
+        boton_personajes_favoritos = tk.Button(menu_frame, text="Personajes favoritos" , bg="pink", command=lambda:self.personajes_favoritos(self.nombre_usuario))
         boton_personajes_favoritos.pack(pady=10)
 
-        boton_series_favoritas = tk.Button(menu_frame, text="Animes favoritos", bg="blue")
+        boton_series_favoritas = tk.Button(menu_frame, text="Animes favoritos", bg="yellow")
         boton_series_favoritas.pack(pady=10)
 
-        boton_series_vistas = tk.Button(menu_frame, text="Animes vistos" , command=lambda:self.animes_vistos(self.nombre_usuario))
+        boton_series_vistas = tk.Button(menu_frame, text="Animes vistos" , bg="pink", command=lambda:self.animes_vistos(self.nombre_usuario))
         boton_series_vistas.pack(pady=10)
 
         # Crear un frame principal que contendrá el canvas y el scrollbar
@@ -518,7 +559,7 @@ class AnimesFavoritos():
             label_nombre = tk.Label(anime_frame, text=anime['nombre'], font=("Arial", 16))
             label_nombre.pack()
             
-        #thread.Thread(target=self.voice_recognition, daemon=True).start()
+        thread.Thread(target=self.voice_recognition, daemon=True).start()
 
         self.ventana.mainloop()
         
@@ -539,6 +580,15 @@ class AnimesFavoritos():
                 if words[0] == "eliminar":
                     anime = " ".join(words[1:])
                     self.delete(anime)
+                    
+                elif command.lower() == "página principal":
+                    self.pagina_principal_command(self.nombre_usuario)
+                    
+                elif command.lower() == "personajes favoritos":
+                    self.personajes_favoritos_command(self.nombre_usuario)
+                    
+                elif command.lower() == "animes vistos":
+                    self.animes_vistos_command(self.nombre_usuario)
                     
             except sr.UnknownValueError:
                 print("No se entendió el comando")
@@ -573,9 +623,11 @@ class AnimesFavoritos():
         confirmation_window.title("Confirmación")
         confirmation_label = tk.Label(confirmation_window, text=f"{anime_name} ha sido eliminado de tus animes favoritos", font=("Arial", 16))
         confirmation_label.pack(pady=20)
-        ok_button = tk.Button(confirmation_window, text="OK", command=confirmation_window.destroy)
-        ok_button.pack(pady=10)
+        confirmation_window.after(3000, confirmation_window.destroy)
     
+        
+    def pagina_principal_command(self, nombre_usuario):
+        self.ventana.after(0, lambda: self.pagina_principal(nombre_usuario))
         
     def pagina_principal(self, nombre_usuario):
         self.threading = False
@@ -583,11 +635,17 @@ class AnimesFavoritos():
         self.ventana.destroy()
         EntornoUsuario(nombre_usuario)
                 
+    def personajes_favoritos_command(self, nombre_usuario):
+        self.ventana.after(0, lambda: self.personajes_favoritos(nombre_usuario))
+        
     def personajes_favoritos(self, nombre_usuario):
         self.threading = False
         print("Finalizando hilo")
         self.ventana.destroy()
         PersonajesFavoritos(nombre_usuario)
+    
+    def animes_vistos_command(self, nombre_usuario):
+        self.ventana.after(0, lambda: self.animes_vistos(nombre_usuario))
         
     def animes_vistos(self, nombre_usuario):
         self.threading = False
@@ -607,28 +665,28 @@ class PersonajesFavoritos():
         self.threading = True
 
         # Prueba para mostrar que se ha metido en el usuario correctamente
-        nombre_usuario_label = tk.Label(self.ventana, text=f"Personajes favoritos de : {self.nombre_usuario}", font=("Arial", 20, "bold"))
+        nombre_usuario_label = tk.Label(self.ventana, text=f"Personajes favoritos de : {self.nombre_usuario}", font=("Arial", 20, "bold"), bg="pink")
         nombre_usuario_label.pack(side=tk.TOP, pady=10)
         
         # Crear el frame del menú a la izquierda
-        menu_frame = tk.Frame(self.ventana, width=300, bg='grey')
+        menu_frame = tk.Frame(self.ventana, width=300, bg='white')
         menu_frame.pack(side=tk.LEFT, fill=tk.Y)
 
         # Crear los botones del menú
         
-        boton_pagina_principal = tk.Button(menu_frame, text="Coleccion de animes", command=lambda:self.pagina_principal(self.nombre_usuario))
+        boton_pagina_principal = tk.Button(menu_frame, text="Coleccion de animes", bg="pink", command=lambda:self.pagina_principal(self.nombre_usuario))
         boton_pagina_principal.pack(pady=10)
         
-        boton_personajes_favoritos = tk.Button(menu_frame, text="Personajes favoritos", bg="blue")
+        boton_personajes_favoritos = tk.Button(menu_frame, text="Personajes favoritos", bg="yellow")
         boton_personajes_favoritos.pack(pady=10)
 
-        boton_series_favoritas = tk.Button(menu_frame, text="Animes favoritos" , command=lambda:self.animes_favoritos(self.nombre_usuario))
+        boton_series_favoritas = tk.Button(menu_frame, text="Animes favoritos" , bg="pink", command=lambda:self.animes_favoritos(self.nombre_usuario))
         boton_series_favoritas.pack(pady=10)
 
-        boton_series_vistas = tk.Button(menu_frame, text="Animes vistos" , command=lambda:self.animes_vistos(self.nombre_usuario))
+        boton_series_vistas = tk.Button(menu_frame, text="Animes vistos" , bg="pink", command=lambda:self.animes_vistos(self.nombre_usuario))
         boton_series_vistas.pack(pady=10)
         
-        boton_realidad_aumentada = tk.Button(menu_frame, text="Realidad aumentada", command=self.realidad_aumentada)
+        boton_realidad_aumentada = tk.Button(menu_frame, text="Realidad aumentada", bg="pink", command=self.realidad_aumentada)
         boton_realidad_aumentada.pack(pady=10)
 
         # Crear un frame principal que contendrá el canvas y el scrollbar
@@ -674,22 +732,9 @@ class PersonajesFavoritos():
             label_nombre = tk.Label(anime_frame, text=anime['nombre'], font=("Arial", 16))
             label_nombre.pack()
             
-        #thread.Thread(target=self.voice_recognition, daemon=True).start()
+        thread.Thread(target=self.voice_recognition, daemon=True).start()
 
         self.ventana.mainloop()
-        
-    def realidad_aumentada(self):
-        self.threading = False
-        print("Finalizando hilo")
-        #saco las rutas de las imagenes de mis personajes favoritos
-        images_path = []
-        with open('data.json', 'r') as f:
-            data = json.load(f)
-        
-        for personaje in data[self.nombre_usuario]['personajes_favoritos']:
-            images_path.append(personaje['imagen'])
-            
-        aruco(images_path)
         
     def voice_recognition(self):
         recognizer = sr.Recognizer()
@@ -709,6 +754,19 @@ class PersonajesFavoritos():
                     character = " ".join(words[1:])
                     self.delete(character)
                     
+                #Scrollear en las distintas
+                elif command.lower() == "página principal":
+                    self.pagina_principal_command(self.nombre_usuario)
+                    
+                elif command.lower() == "animes favoritos":
+                    self.animes_favoritos_command(self.nombre_usuario)
+                    
+                elif command.lower() == "animes vistos":
+                    self.animes_vistos_command(self.nombre_usuario)
+                
+                elif command.lower() == "realidad aumentada":
+                    self.realidad_aumentada_command()
+                    
             except sr.UnknownValueError:
                 print("No se entendió el comando")
             except sr.RequestError as e:
@@ -724,7 +782,7 @@ class PersonajesFavoritos():
 
         personajes_favoritos = user_data[self.nombre_usuario]['personajes_favoritos']
         for personaje in personajes_favoritos:
-            if personaje['nombre'].lower() == character_name.lower():
+            if personaje['key'].lower() == character_name.lower():
                 personajes_favoritos.remove(personaje)
                 print(f"Anime {character_name} eliminado de tus favoritos.")
                 self.show_confirmation_delete(character_name)
@@ -740,26 +798,52 @@ class PersonajesFavoritos():
         confirmation_window.title("Confirmación")
         confirmation_label = tk.Label(confirmation_window, text=f"{character_name} ha sido eliminado de tus personajes favoritos", font=("Arial", 16))
         confirmation_label.pack(pady=20)
-        ok_button = tk.Button(confirmation_window, text="OK", command=confirmation_window.destroy)
-        ok_button.pack(pady=10)
+        confirmation_window.after(3000, confirmation_window.destroy)
+       
+        
+    def pagina_principal_command(self, nombre_usuario):
+        self.ventana.after(0, lambda: self.pagina_principal(nombre_usuario))
         
     def pagina_principal(self, nombre_usuario):
         self.threading = False
         print("Finalizando hilo")
         self.ventana.destroy()
         EntornoUsuario(nombre_usuario)
-                
+
+    def animes_favoritos_command(self, nombre_usuario):
+        self.ventana.after(0, lambda: self.animes_favoritos(nombre_usuario))
+        
     def animes_favoritos(self, nombre_usuario):
         self.threading = False
         print("Finalizando hilo")
         self.ventana.destroy()
         AnimesFavoritos(nombre_usuario)
+    
+    def animes_vistos_command(self, nombre_usuario):
+        self.ventana.after(0, lambda: self.animes_vistos(nombre_usuario))
         
     def animes_vistos(self, nombre_usuario):
         self.threading = False
         print("Finalizando hilo")
         self.ventana.destroy()
         AnimesVistos(nombre_usuario)
+    
+    def realidad_aumentada_command(self):
+        self.ventana.after(0, lambda: self.realidad_aumentada())
+        
+    def realidad_aumentada(self):
+        self.threading = False
+        print("Finalizando hilo")
+        #saco las rutas de las imagenes de mis personajes favoritos
+        images_path = []
+        with open('data.json', 'r') as f:
+            data = json.load(f)
+        
+        for personaje in data[self.nombre_usuario]['personajes_favoritos']:
+            images_path.append(personaje['imagen'])
+            
+        aruco(images_path)
+        
         
 
 class AnimesVistos():
@@ -773,25 +857,25 @@ class AnimesVistos():
         self.threading = True
 
         # Prueba para mostrar que se ha metido en el usuario correctamente
-        nombre_usuario_label = tk.Label(self.ventana, text=f"Animes vistos de : {self.nombre_usuario}", font=("Arial", 20, "bold"))
+        nombre_usuario_label = tk.Label(self.ventana, text=f"Animes vistos de : {self.nombre_usuario}", font=("Arial", 20, "bold"), bg="pink")
         nombre_usuario_label.pack(side=tk.TOP, pady=10)
         
         # Crear el frame del menú a la izquierda
-        menu_frame = tk.Frame(self.ventana, width=300, bg='grey')
+        menu_frame = tk.Frame(self.ventana, width=300, bg='white')
         menu_frame.pack(side=tk.LEFT, fill=tk.Y)
 
         # Crear los botones del menú
         
-        boton_pagina_principal = tk.Button(menu_frame, text="Coleccion de animes", command=lambda:self.pagina_principal(self.nombre_usuario))
+        boton_pagina_principal = tk.Button(menu_frame, text="Coleccion de animes", bg="pink", command=lambda:self.pagina_principal(self.nombre_usuario))
         boton_pagina_principal.pack(pady=10)
         
-        boton_personajes_favoritos = tk.Button(menu_frame, text="Personajes favoritos", command=lambda:self.personajes_favoritos(self.nombre_usuario))
+        boton_personajes_favoritos = tk.Button(menu_frame, text="Personajes favoritos", bg="pink", command=lambda:self.personajes_favoritos(self.nombre_usuario))
         boton_personajes_favoritos.pack(pady=10)
 
-        boton_series_favoritas = tk.Button(menu_frame, text="Animes favoritos" , command=lambda:self.animes_favoritos(self.nombre_usuario))
+        boton_series_favoritas = tk.Button(menu_frame, text="Animes favoritos" , bg="pink", command=lambda:self.animes_favoritos(self.nombre_usuario))
         boton_series_favoritas.pack(pady=10)
 
-        boton_series_vistas = tk.Button(menu_frame, text="Animes vistos", bg="blue")
+        boton_series_vistas = tk.Button(menu_frame, text="Animes vistos", bg="yellow")
         boton_series_vistas.pack(pady=10)
 
         # Crear un frame principal que contendrá el canvas y el scrollbar

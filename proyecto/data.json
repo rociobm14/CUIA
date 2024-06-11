@@ -3,6 +3,10 @@
         {
             "nombre_usuario": "rocio",
             "contrasena": "holaquetal"
+        },
+        {
+            "nombre_usuario": "a",
+            "contrasena": "a"
         }
     ],
     "rocio": {
@@ -23,14 +27,26 @@
                         "imagen": "imagenes/rei.jpeg"
                     }
                 ]
+            },
+            {
+                "nombre": "Shingeki no Kyojin",
+                "imagen": "imagenes/shingeki.jpeg",
+                "descripcion": "La historia est\u00e1 ambientada en la isla \u00abParadis\u00bb, ubicada al noreste del pa\u00eds de \u00abMarley\u00bb, en donde Eren Jaeger vive con su familia (entre ellos su hermana recogida por su familia Mikasa Ackerman) y su mejor amigo Armin Arlert. Su pueblo colinda con la \u00abMuralla Mar\u00eda\u00bb, la m\u00e1s externa del Reino de las \u00abtres murallas\u00bb. Estas enormes murallas fueron construidas cien a\u00f1os atr\u00e1s, con el fin de protegerse de los \u00abtitanes\u00bb, criaturas de entre tres y sesenta metros de alto que casi aniquilaron a la humanidad. Adem\u00e1s de su gran tama\u00f1o, los titanes se caracterizan por su estructura corporal parecida a la de los humanos, a quienes devoran de forma instintiva, y la \u00fanica manera conocida de matarlos es cort\u00e1ndoles la nuca",
+                "personajes": [
+                    {
+                        "key": "Eren",
+                        "nombre": "Eren Jaeger",
+                        "imagen": "imagenes/eren.jpeg"
+                    },
+                    {
+                        "key": "Ackerman",
+                        "nombre": "Mikasa Ackerman",
+                        "imagen": "imagenes/mikasa.jpeg"
+                    }
+                ]
             }
         ],
         "personajes_favoritos": [
-            {
-                "key": "Ackerman",
-                "nombre": "Mikasa Ackerman",
-                "imagen": "imagenes/mikasa.jpeg"
-            },
             {
                 "key": "Edward",
                 "nombre": "Edward Elric",
@@ -55,6 +71,11 @@
                 "key": "Light",
                 "nombre": "Light Yagami",
                 "imagen": "imagenes/light.jpeg"
+            },
+            {
+                "key": "Eren",
+                "nombre": "Eren Jaeger",
+                "imagen": "imagenes/eren.jpeg"
             }
         ],
         "animes_vistos": [
@@ -74,7 +95,24 @@
                         "imagen": "imagenes/rei.jpeg"
                     }
                 ]
+            },
+            {
+                "nombre": "Naruto",
+                "imagen": "imagenes/naruto.jpeg",
+                "personajes": [
+                    {
+                        "key": "Naruto",
+                        "nombre": "Naruto Uzumaki",
+                        "imagen": "imagenes/naru.jpeg"
+                    },
+                    {
+                        "key": "Itachi",
+                        "nombre": "Itachi Uchiha",
+                        "imagen": "imagenes/itachi.jpeg"
+                    }
+                ]
             }
         ]
-    }
+    },
+    "a": {}
 }
