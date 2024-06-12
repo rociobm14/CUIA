@@ -14,7 +14,23 @@
             "key": "Ackerman",
             "nombre": "Mikasa Ackerman",
             "imagen": "imagenes/mikasa.jpeg"
+          },
+          {
+            "key": "Levy",
+            "nombre": "Levi Ackerman",
+            "imagen": "imagenes/levi.jpeg"
+          },
+          {
+            "key": "Armin",
+            "nombre": "Armin Arlert",
+            "imagen": "imagenes/armin.jpeg"
+          },
+          {
+            "key": "Historia",
+            "nombre": "Historia Reiss",
+            "imagen": "imagenes/historia.jpeg"
           }
+
         ]
       },
       {
@@ -31,6 +47,21 @@
             "key": "Ayanami",
             "nombre": "Rei Ayanami",
             "imagen": "imagenes/rei.jpeg"
+          },
+          {
+            "key": "Langley",
+            "nombre": "Asuka Langley Soryu",
+            "imagen": "imagenes/asuka.jpeg"
+          },
+          {
+            "key": "Katsuragi",
+            "nombre": "Misato Katsuragi",
+            "imagen": "imagenes/misato.jpeg"
+          },
+          {
+            "key": "Gendo",
+            "nombre": "Gendo Ikari",
+            "imagen": "imagenes/gendo.jpeg"
           }
         ]
       },
@@ -48,6 +79,21 @@
             "key": "Law",
             "nombre": "Lawliet L",
             "imagen": "imagenes/lawliet.jpeg"
+          },
+          {
+            "key": "Misa",
+            "nombre": "Misa Amane",
+            "imagen": "imagenes/misa.jpeg"
+          },
+          {
+            "key": "Ryuk",
+            "nombre": "Ryuk",
+            "imagen": "imagenes/ryuk.jpeg"
+          },
+          {
+            "key": "Near",
+            "nombre": "Near",
+            "imagen": "imagenes/near.jpeg"
           }
         ]
       },
@@ -65,11 +111,26 @@
             "key": "Nezuko",
             "nombre": "Nezuko Kamado",
             "imagen": "imagenes/nezuko.jpeg"
+          },
+          {
+            "key": "Zenitsu",
+            "nombre": "Zenitsu Agatsuma",
+            "imagen": "imagenes/zenitsu.jpeg"
+          },
+          {
+            "key": "Inosuke",
+            "nombre": "Inosuke Hashibira",
+            "imagen": "imagenes/inosuke.jpeg"
+          },
+          {
+            "key": "Rengoku",
+            "nombre": "Kyojuro Rengoku",
+            "imagen": "imagenes/rengoku.jpeg"
           }
         ]
       },
       {
-        "nombre": "Full Metal Alchemist Brotherhood",
+        "nombre": "Full Metal Alchemist",
         "imagen": "imagenes/fma.jpeg", 
         "descripcion": "La historia sigue a dos hermanos alquimistas, Edward y Alphonse Elric, en su búsqueda para encontrar la Piedra Filosofal después de un intento fallido de resucitar a su madre utilizando la alquimia. Durante el proceso, Edward pierde una pierna y Alphonse su cuerpo entero. Para salvar a su hermano, Edward sacrifica su brazo para unir el alma de Alphonse a una armadura. Juntos, los hermanos se embarcan en un viaje para recuperar sus cuerpos y descubrir los secretos detrás de la Piedra Filosofal.",
         "personajes": [
@@ -79,9 +140,24 @@
             "imagen": "imagenes/edward.jpeg"
           },
           {
-            "key": "Alphonse",
+            "key": "Elric",
             "nombre": "Alphonse Elric",
             "imagen": "imagenes/alphonse.jpeg"
+          },
+          {
+            "key": "Mustang",
+            "nombre": "Roy Mustang",
+            "imagen": "imagenes/mustang.jpeg"
+          },
+          {
+            "key": "Rockbell",
+            "nombre": "Winry Rockbell",
+            "imagen": "imagenes/winry.jpeg"
+          },
+          {
+            "key": "Scar",
+            "nombre": "Scar",
+            "imagen": "imagenes/scar.jpeg"
           }
         ]
       },
@@ -100,12 +176,28 @@
             "key": "Kageyama",
             "nombre": "Tobio Kageyama",
             "imagen": "imagenes/kageyama.jpeg"
+          },
+          {
+            "key": "Nishinoya",
+            "nombre": "Yu Nishinoya",
+            "imagen": "imagenes/nishinoya.jpeg"
+          },
+          {
+            "key": "Tsukishima",
+            "nombre": "Kei Tsukishima",
+            "imagen": "imagenes/tsukishima.jpeg"
+          },
+          {
+            "key": "Tetsuro",
+            "nombre": "Tetsuro Kuroo",
+            "imagen": "imagenes/tetsuro.jpeg"
           }
         ]
       },
       {
         "nombre": "Naruto",
         "imagen": "imagenes/naruto.jpeg",
+        "descripcion": "La historia se centra en Naruto Uzumaki, un joven ninja de la Aldea Oculta de la Hoja (Konoha). Naruto es un huérfano que lleva dentro de él al Zorro de Nueve Colas (Kurama), un demonio que atacó la aldea años atrás y fue sellado dentro de él por su padre, el Cuarto Hokage, para salvar la aldea. Debido a esto, Naruto ha sido evitado y despreciado por los aldeanos durante toda su vida.",
         "personajes": [
           {
             "key": "Naruto",
@@ -116,12 +208,28 @@
             "key": "Itachi",
             "nombre": "Itachi Uchiha",
             "imagen": "imagenes/itachi.jpeg"
+          },
+          {
+            "key": "Sasuke",
+            "nombre": "Sasuke Uchiha",
+            "imagen": "imagenes/sasuke.jpeg"
+          },
+          {
+            "key": "Kakashi",
+            "nombre": "Kakashi Hatake",
+            "imagen": "imagenes/kakashi.jpeg"
+          },
+          {
+            "key": "Sakura",
+            "nombre": "Sakura Haruno",
+            "imagen": "imagenes/sakura.jpeg"
           }
         ]
       },
       {
         "nombre": "Jojo's Bizarre Adventure",
         "imagen": "imagenes/jojo.jpeg",
+        "descripcion": "La historia comienza en la Inglaterra victoriana y sigue a Jonathan Joestar, un joven aristócrata. Su vida cambia cuando su padre adopta a Dio Brando, un joven ambicioso y malvado. Dio usa una misteriosa máscara de piedra para convertirse en un vampiro y empieza a causar caos. Jonathan, junto con su mentor Zeppeli y su amigo Speedwagon, aprende a usar una técnica de combate llamada Hamon para enfrentarse a Dio y detener sus planes.",
         "personajes": [
           {
             "key": "Jonathan", 
@@ -132,12 +240,28 @@
             "key": "Dio",
             "nombre": "Dio Brando",
             "imagen": "imagenes/dio.jpeg"
+          },
+          {
+            "key": "Joseph",
+            "nombre": "Joseph Joestar",
+            "imagen": "imagenes/joseph.jpeg"
+          },
+          {
+            "key": "Jotaro",
+            "nombre": "Jotaro Kujo",
+            "imagen": "imagenes/jotaro.jpeg"
+          },
+          {
+            "key": "Giorno",
+            "nombre": "Giorno Giovanna",
+            "imagen": "imagenes/giorno.jpeg"
           }
         ]
       },
       {
         "nombre": "One Piece",
         "imagen": "imagenes/onepiece.jpeg",
+        "descripcion":"La historia comienza con Monkey D. Luffy, un joven que sueña con convertirse en el Rey de los Piratas. Inspirado por su héroe de la infancia, el pirata Shanks, Luffy parte de su aldea natal en el East Blue para formar su propia tripulación y encontrar el One Piece. Luffy posee habilidades elásticas debido a que comió una Fruta del Diablo llamada Gomu Gomu no Mi.",
         "personajes": [
           {
             "key": "Luffy", 
@@ -148,6 +272,21 @@
             "key": "Zoro",
             "nombre": "Roronoa Zoro",
             "imagen": "imagenes/zoro.jpeg"
+          },
+          {
+            "key": "Nami",
+            "nombre": "Nami",
+            "imagen": "imagenes/nami.jpeg"
+          },
+          {
+            "key": "Sanji",
+            "nombre": "Sanji",
+            "imagen": "imagenes/sanji.jpeg"
+          },
+          {
+            "key": "Chopper",
+            "nombre": "Tony Tony Chopper",
+            "imagen": "imagenes/chopper.jpeg"
           }
         ]
       },
@@ -155,55 +294,41 @@
       {
         "nombre": "Jujutsu Kaisen",
         "imagen": "imagenes/jujutsu.jpeg",
+        "descripcion": "Yuji Itadori es un estudiante de secundaria con una fuerza física inusual. Vive una vida normal hasta que encuentra un dedo podrido en su escuela, que resulta ser un objeto maldito muy poderoso. Cuando él y sus amigos abren el sello del objeto, liberan una maldición que los ataca. Para proteger a sus amigos, Yuji decide comer el dedo, lo que lo convierte en el anfitrión de Ryomen Sukuna, una maldición extremadamente poderosa y malvada.",
         "personajes": [
           {
-            "key": "Itadori",
+            "key": "Yuji",
             "nombre": "Yuji Itadori",
-            "imagen": "imagenes/yuji.jpeg"
+            "imagen": "imagenes/itadori.jpeg"
           },
           {
             "key": "Satoru",
             "nombre": "Satoru Gojo",
             "imagen": "imagenes/gojo.jpeg"
-          }
-        ]
-      },
-      {
-        "nombre": "Cowboy Bebop",
-        "imagen": "imagenes/cowboy.jpeg",
-        "personajes": [
-          {
-            "key": "Spike", 
-            "nombre": "Spike Spiegel",
-            "imagen": "imagenes/spike.jpeg"
           },
           {
-            "key": "Valentine",
-            "nombre": "Faye Valentine",
-            "imagen": "imagenes/faye.jpeg"
-          }
-        ]
-      },
-      {
-        "nombre": "Spy X Family",
-        "imagen": "imagenes/spy.jpeg",
-        "personajes": [
-          {
-            "key": "Loyd",
-            "nombre": "Loyd Forger",
-            "imagen": "imagenes/loyd.jpeg"
+            "key": "Megumi",
+            "nombre": "Megumi Fushiguro",
+            "imagen": "imagenes/megumi.jpeg"
           },
           {
-            "key": "Anya",
-            "nombre": "Anya Forger",
-            "imagen": "imagenes/anya.jpeg"
+            "key": "Nobara",
+            "nombre": "Nobara Kugisaki",
+            "imagen": "imagenes/nobara.jpeg"
+          },
+          {
+            "key": "Suguru",
+            "nombre": "Suguru Geto",
+            "imagen": "imagenes/suguru.jpeg"
           }
+
         ]
       },
 
       {
         "nombre": "Bleach",
         "imagen": "imagenes/bleach.jpeg",
+        "descripcion": "La historia comienza con Ichigo Kurosaki, un estudiante de secundaria que tiene la capacidad de ver espíritus. Su vida cambia drásticamente cuando se encuentra con Rukia Kuchiki, una Shinigami (Diosa de la Muerte) que combate a los Hollows, espíritus malignos que atacan a los humanos. Durante una batalla con un Hollow, Rukia resulta herida y transfiere temporalmente sus poderes a Ichigo, convirtiéndolo en un Shinigami sustituto. Ichigo acepta la responsabilidad de proteger a su ciudad de los Hollows mientras Rukia se recupera.",
         "personajes": [
           {
             "key": "Ichigo",
@@ -214,25 +339,157 @@
             "key": "Sosuke",
             "nombre": "Sosuke Aizen",
             "imagen": "imagenes/sosuke.jpeg"
+          },
+          {
+            "key": "Rukia",
+            "nombre": "Rukia Kuchiki",
+            "imagen": "imagenes/rukia.jpeg"
+          },
+          {
+            "key": "Orihime",
+            "nombre": "Orihime Inoue",
+            "imagen": "imagenes/orihime.jpeg"
+          },
+          {
+            "key": "Renji",
+            "nombre": "Renji Abarai",
+            "imagen": "imagenes/renji.jpeg"
           }
         ]
       },
+
       {
-        "nombre": "Hunter X Hunter",
-        "imagen": "imagenes/hunter.jpeg",
+        "nombre": "Tokyo Ghoul",
+        "imagen": "imagenes/tokyo.jpeg",
+        "descripcion": "La historia sigue a Ken Kaneki, un joven universitario que es atacado por un Ghoul, una criatura que se alimenta de carne humana. Después del ataque, Kaneki es llevado al hospital y recibe un trasplante de órganos de la Ghoul que lo atacó, convirtiéndolo en un Ghoul mitad humano. A medida que lucha por adaptarse a su nueva vida, Kaneki se ve envuelto en el mundo oscuro y peligroso de los Ghouls y los Cazadores de Ghouls.",
         "personajes": [
           {
-            "key": "Gon",
-            "nombre": "Gon Freecss",
-            "imagen": "imagenes/gon.jpeg"
+            "key": "Kaneki",
+            "nombre": "Ken Kaneki",
+            "imagen": "imagenes/kaneki.jpeg"
           },
           {
-            "key": "Killua",
-            "nombre": "Killua Zoldyck",
-            "imagen": "imagenes/killua.jpeg"
+            "key": "Kirishima",
+            "nombre": "Touka Kirishima",
+            "imagen": "imagenes/kirishima.jpeg"
+          },
+
+          {
+            "key": "Nagachika",
+            "nombre": "Hideyoshi Nagachika",
+            "imagen": "imagenes/nagachika.jpeg"
+          },
+          {
+            "key": "Suzuya",
+            "nombre": "Juuzou Suzuya",
+            "imagen": "imagenes/suzuya.jpeg"
+          },
+          {
+            "key": "Hinami",
+            "nombre": "Hinami Fueguchi",
+            "imagen": "imagenes/hinami.jpeg"
+          }
+          
+        ]
+      },
+
+      {
+        "nombre": "One Punch Man",
+        "imagen": "imagenes/onepunch.jpeg",
+        "descripcion": "La historia sigue a Saitama, un héroe calvo y aparentemente común que puede derrotar a cualquier enemigo con un solo golpe. A pesar de su increíble fuerza y habilidades, Saitama se siente aburrido y desmotivado por la falta de desafíos en su vida. Buscando emoción y reconocimiento, Saitama se une a la Asociación de Héroes y lucha contra varios monstruos y villanos para demostrar su valía como héroe.",
+        "personajes": [
+          {
+            "key": "Saitama",
+            "nombre": "Saitama",
+            "imagen": "imagenes/saitama.jpeg"
+          },
+         
+          {
+            "key": "Tatsumaki",
+            "nombre": "Tatsumaki",
+            "imagen": "imagenes/tatsumaki.jpeg"
+          },
+          {
+            "key": "Silver",
+            "nombre": "Silver Fang",
+            "imagen": "imagenes/silver.jpeg"
+          },
+          {
+            "key": "King",
+            "nombre": "King",
+            "imagen": "imagenes/king.jpeg"
+          },
+
+          {
+            "key": "Samurai",
+            "nombre": "Atomic Samurai",
+            "imagen": "imagenes/samurai.jpeg"
+          }
+        ]
+      },
+
+      {
+        "nombre": "Inuyasha",
+        "imagen": "imagenes/inuyasha.jpeg",
+        "descripcion": "La historia sigue a Kagome Higurashi, una adolescente que es transportada a la era feudal de Japón a través de un pozo en su templo familiar. Allí, conoce a Inuyasha, un híbrido humano-demonio que busca la Perla de Shikon para aumentar su poder. Kagome y Inuyasha se unen para encontrar los fragmentos de la Perla de Shikon dispersos por todo Japón y evitar que caigan en manos equivocadas.",
+        "personajes": [
+          {
+            "key": "Inuyasha",
+            "nombre": "Inuyasha",
+            "imagen": "imagenes/inu.jpeg"
+          },
+          {
+            "key": "Kagome",
+            "nombre": "Kagome Higurashi",
+            "imagen": "imagenes/kagome.jpeg"
+          },
+          {
+            "key": "Sango",
+            "nombre": "Sango",
+            "imagen": "imagenes/sango.jpeg"
+          },
+          {
+            "key": "Naraku",
+            "nombre": "Naraku",
+            "imagen": "imagenes/naraku.jpeg"
+          }
+          
+        ]
+      },
+
+      {
+        "nombre": "Dragon Ball",
+        "imagen": "imagenes/dragonball.jpeg",
+        "descripcion": "La historia sigue a Son Goku, un niño con cola de mono que vive en las montañas y posee una fuerza y habilidades sobrehumanas. Goku se embarca en una aventura para encontrar las legendarias Bolas de Dragón, siete esferas mágicas que, cuando se reúnen, pueden conceder cualquier deseo. A lo largo de su viaje, Goku se enfrenta a poderosos enemigos y se convierte en uno de los guerreros más fuertes del universo.",
+        "personajes": [
+          {
+            "key": "Goku",
+            "nombre": "Son Goku",
+            "imagen": "imagenes/goku.jpeg"
+          },
+          {
+            "key": "Vegeta",
+            "nombre": "Vegeta",
+            "imagen": "imagenes/vegeta.jpeg"
+          },
+          {
+            "key": "Gohan",
+            "nombre": "Son Gohan",
+            "imagen": "imagenes/gohan.jpeg"
+          },
+          {
+            "key": "Piccolo",
+            "nombre": "Piccolo",
+            "imagen": "imagenes/piccolo.jpeg"
+          },
+          {
+            "key": "Bulma",
+            "nombre": "Bulma",
+            "imagen": "imagenes/bulma.jpeg"
           }
         ]
       }
+     
     ]
   }
   

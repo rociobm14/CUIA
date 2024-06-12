@@ -43,18 +43,18 @@ class ConfirmarRechazarRegistro:
         label_imagen.place(relx=0.5, rely=0.3, anchor=tk.CENTER)
         
         # Crear un widget Label para la confirmación
-        titulo_label = tk.Label(self.ventana, text="Do you want to use this photo?", font=("Arial", 20, "bold"), bg="#FFB6C1", fg="white", border=0)
+        titulo_label = tk.Label(self.ventana, text="¿Quieres usar esta foto?", font=("Arial", 20, "bold"), bg="#FFB6C1", fg="white", border=0)
         titulo_label.place(relx=0.5, rely=0.7, anchor=tk.CENTER)
 
         # Estilo para los botones sin bordes
         button_style = {"fg": "white", "bg": "#FFB6C1", "border": 0, "font": ("Arial", 20, "bold")}
 
         # Crear un widget Button para aceptar la foto
-        boton_aceptar = tk.Button(self.ventana, text="Yes", command=lambda:self.aceptar(self.nombre_usuario, self.contraseña), **button_style)
+        boton_aceptar = tk.Button(self.ventana, text="Usar foto", command=lambda:self.aceptar(self.nombre_usuario, self.contraseña), **button_style)
         boton_aceptar.place(relx = 0.3, rely = 0.9, anchor = tk.CENTER)
 
         # Crear un widget Button para rechazar la foto
-        boton_rechazar = tk.Button(self.ventana, text="No", command=lambda:self.rechazar(self.nombre_usuario, self.contraseña), **button_style)
+        boton_rechazar = tk.Button(self.ventana, text="No usar foto", command=lambda:self.rechazar(self.nombre_usuario, self.contraseña), **button_style)
         boton_rechazar.place(relx = 0.7, rely = 0.9, anchor = tk.CENTER)
 
         self.voice_thread = thread.Thread(target=self.voice_recognition, daemon=True)

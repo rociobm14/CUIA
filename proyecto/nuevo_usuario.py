@@ -70,7 +70,7 @@ class NuevoUsuario():
                 command = recognizer.recognize_google(audio, language='es-ES')
                 print(f"Comando escuchado: {command}")
                 command = command.lower()
-                if command.startswith("registro"):
+                if command.startswith("registrar usuario"):
                     self.command_queue.put(lambda: self.registro_command(self.nombre_usuario, self.contraseña))
              
             except sr.UnknownValueError:

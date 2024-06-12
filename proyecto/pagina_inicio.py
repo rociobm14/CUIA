@@ -32,7 +32,7 @@ class VentanaPrincipal():
         btn_sign_in = tk.Button(self.ventana, text="Iniciar sesión", command=self.inicio_sesion, **button_style)
         btn_sign_in.place(relx=0.5, rely=0.62, anchor=tk.CENTER)
 
-        btn_sign_up = tk.Button(self.ventana, text="Darse de alta", command=self.darse_alta, **button_style)
+        btn_sign_up = tk.Button(self.ventana, text="Dar de alta", command=self.darse_alta, **button_style)
         btn_sign_up.place(relx=0.5, rely=0.69, anchor=tk.CENTER)
         
         self.voice_thread = thread.Thread(target=self.voice_recognition, daemon=True)

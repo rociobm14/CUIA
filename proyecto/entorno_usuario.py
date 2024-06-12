@@ -25,7 +25,7 @@ class EntornoUsuario():
 
         # Crear los botones del menú
         
-        boton_pagina_principal = tk.Button(menu_frame, text="Coleccion de animes", bg="yellow")
+        boton_pagina_principal = tk.Button(menu_frame, text="Página principal", bg="yellow")
         boton_pagina_principal.pack(pady=10)
         
         boton_personajes_favoritos = tk.Button(menu_frame, text="Personajes favoritos" , bg="pink", command=lambda:self.personajes_favoritos(self.nombre_usuario))
@@ -271,7 +271,7 @@ class InformacionAnime():
         
         # Crear los botones del menú
         
-        boton_pagina_principal = tk.Button(menu_frame, text="Coleccion de animes", bg="pink", command=lambda:self.pagina_principal(self.nombre_usuario))
+        boton_pagina_principal = tk.Button(menu_frame, text="Página principal", bg="pink", command=lambda:self.pagina_principal(self.nombre_usuario))
         boton_pagina_principal.pack(pady=10)
         
         boton_personajes_favoritos = tk.Button(menu_frame, text="Personajes favoritos" , bg="pink", command=lambda:self.personajes_favoritos(self.nombre_usuario))
@@ -359,6 +359,10 @@ class InformacionAnime():
                     label_nombre_personaje = tk.Label(personaje_frame, text=personaje['nombre'], font=("Arial", 12))
                     label_nombre_personaje.pack()
                     
+                    #Crear un label para la key del personaje
+                    label_key_personaje = tk.Label(personaje_frame, text=f"({personaje['key']})", font=("Arial", 12))
+                    label_key_personaje.pack()
+                    
         thread.Thread(target=self.voice_recognition, daemon=True).start()
                     
         self.ventana.mainloop()
@@ -445,7 +449,6 @@ class InformacionAnime():
         return None
     
     def add_to_favorites(self, character_name):
-        
         character = self.find_character(character_name)
         print("el personaje es", character)
 
@@ -462,16 +465,26 @@ class InformacionAnime():
             raise ValueError(f"El personaje {character} ya está en tus favoritos")
         else:
             if character is not None:
-                
-                print("entra aqui")
-                user_data[self.nombre_usuario]['personajes_favoritos'].append(character)
+                # Verifica si ya hay 6 o más personajes favoritos
+                if len(user_data[self.nombre_usuario]['personajes_favoritos']) >= 6:
+                    self.show_error_too_many_favorites()
+                else:
+                    print("entra aqui")
+                    user_data[self.nombre_usuario]['personajes_favoritos'].append(character)
 
-                with open('data.json', 'w') as archivo:
-                    json.dump(user_data, archivo, indent=4)
+                    with open('data.json', 'w') as archivo:
+                        json.dump(user_data, archivo, indent=4)
 
-                print("Nuevo contenido agregado a 'personajes_favoritos' correctamente.")
+                    print("Nuevo contenido agregado a 'personajes_favoritos' correctamente.")
 
-                self.show_confirmation_favourites(character_name)
+                    self.show_confirmation_favourites(character_name)
+
+    def show_error_too_many_favorites(self):
+        confirmation_window = tk.Toplevel(self.ventana)
+        confirmation_window.title("Confirmación")
+        confirmation_label = tk.Label(confirmation_window, text="No puedes añadir más personajes a favoritos, ya tienes 6.", font=("Arial", 16))
+        confirmation_label.pack(pady=20)
+        confirmation_window.after(3000, confirmation_window.destroy)
         
     def show_confirmation_favourites(self, character_name):
         confirmation_window = tk.Toplevel(self.ventana)
@@ -504,7 +517,7 @@ class AnimesFavoritos():
 
         # Crear los botones del menú
         
-        boton_pagina_principal = tk.Button(menu_frame, text="Coleccion de animes", bg="pink", command=lambda:self.pagina_principal(self.nombre_usuario))
+        boton_pagina_principal = tk.Button(menu_frame, text="Página principal", bg="pink", command=lambda:self.pagina_principal(self.nombre_usuario))
         boton_pagina_principal.pack(pady=10)
         
         boton_personajes_favoritos = tk.Button(menu_frame, text="Personajes favoritos" , bg="pink", command=lambda:self.personajes_favoritos(self.nombre_usuario))
@@ -674,7 +687,7 @@ class PersonajesFavoritos():
 
         # Crear los botones del menú
         
-        boton_pagina_principal = tk.Button(menu_frame, text="Coleccion de animes", bg="pink", command=lambda:self.pagina_principal(self.nombre_usuario))
+        boton_pagina_principal = tk.Button(menu_frame, text="Página principal", bg="pink", command=lambda:self.pagina_principal(self.nombre_usuario))
         boton_pagina_principal.pack(pady=10)
         
         boton_personajes_favoritos = tk.Button(menu_frame, text="Personajes favoritos", bg="yellow")
@@ -713,24 +726,28 @@ class PersonajesFavoritos():
         with open('data.json', 'r') as f:
             data = json.load(f)
             
-        for i, anime in enumerate(data[self.nombre_usuario]['personajes_favoritos']):
+        for i, personaje in enumerate(data[self.nombre_usuario]['personajes_favoritos']):
             # Cargar y redimensionar la imagen del anime
-            imagen_anime = Image.open(anime['imagen'])
-            imagen_anime = imagen_anime.resize((300, 300), Image.LANCZOS)
-            imagen_anime = ImageTk.PhotoImage(imagen_anime)
-            self.imagenes_animes.append(imagen_anime)  # Mantener referencia a la imagen
+            imagen_personaje = Image.open(personaje['imagen'])
+            imagen_personaje = imagen_personaje.resize((300, 300), Image.LANCZOS)
+            imagen_personaje = ImageTk.PhotoImage(imagen_personaje)
+            self.imagenes_animes.append(imagen_personaje)  # Mantener referencia a la imagen
 
             # Crear un frame para cada anime
-            anime_frame = tk.Frame(animes_frame, bg='white')
-            anime_frame.grid(row=i//5, column=i%5, padx=10, pady=10, sticky="nsew")
+            personaje_frame = tk.Frame(animes_frame, bg='white')
+            personaje_frame.grid(row=i//5, column=i%5, padx=10, pady=10, sticky="nsew")
 
             # Crear un label para la imagen
-            label_imagen = tk.Label(anime_frame, image=imagen_anime)
+            label_imagen = tk.Label(personaje_frame, image=imagen_personaje)
             label_imagen.pack(padx=10, pady=10)
 
             # Crear un label para el nombre del anime
-            label_nombre = tk.Label(anime_frame, text=anime['nombre'], font=("Arial", 16))
+            label_nombre = tk.Label(personaje_frame, text=personaje['nombre'], font=("Arial", 16))
             label_nombre.pack()
+            
+            #Crear un label para la key del personaje
+            label_key_personaje = tk.Label(personaje_frame, text=f"({personaje['key']})", font=("Arial", 12))
+            label_key_personaje.pack()
             
         thread.Thread(target=self.voice_recognition, daemon=True).start()
 
@@ -866,7 +883,7 @@ class AnimesVistos():
 
         # Crear los botones del menú
         
-        boton_pagina_principal = tk.Button(menu_frame, text="Coleccion de animes", bg="pink", command=lambda:self.pagina_principal(self.nombre_usuario))
+        boton_pagina_principal = tk.Button(menu_frame, text="Página principal", bg="pink", command=lambda:self.pagina_principal(self.nombre_usuario))
         boton_pagina_principal.pack(pady=10)
         
         boton_personajes_favoritos = tk.Button(menu_frame, text="Personajes favoritos", bg="pink", command=lambda:self.personajes_favoritos(self.nombre_usuario))
