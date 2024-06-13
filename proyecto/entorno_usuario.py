@@ -8,7 +8,7 @@ from aruco import aruco
 class EntornoUsuario():
     def __init__(self, n):
         self.ventana = tk.Tk()
-        self.ventana.geometry("1000x1000")  # establecemos las dimensiones principales de la pantalla
+        self.ventana.geometry("10000x10000")  # establecemos las dimensiones principales de la pantalla
         self.ventana.title("Your Anime Realm")  # título de mi app
         
         self.nombre_usuario = n
@@ -70,7 +70,7 @@ class EntornoUsuario():
 
             # Crear un frame para cada anime
             anime_frame = tk.Frame(animes_frame, bg='white')
-            anime_frame.grid(row=i//5, column=i%5, padx=10, pady=10, sticky="nsew")
+            anime_frame.grid(row=i//3, column=i%3, padx=10, pady=10, sticky="nsew")
 
             # Crear un label para la imagen
             label_imagen = tk.Label(anime_frame, image=imagen_anime)
@@ -81,8 +81,16 @@ class EntornoUsuario():
             label_nombre.pack()
 
             # Crear un botón para ver más información
-            boton_info = tk.Button(anime_frame, text="Ver información", command=lambda anime=anime: self.ver_informacion(anime))
+            boton_info = tk.Button(anime_frame, text="Información", command=lambda anime=anime: self.ver_informacion(anime))
             boton_info.pack(pady=10)
+            
+             # Crear un botón para añadir anime a favoritos
+            boton_favoritos = tk.Button(anime_frame, text="Favoritos", command=lambda anime=anime['nombre']: self.add_to_favorites(anime))
+            boton_favoritos.pack(pady=10)
+            
+            # Crear un botón para añadir anime a vistos
+            boton_favoritos = tk.Button(anime_frame, text="Vistos", command=lambda anime=anime['nombre']: self.add_to_watched(anime))
+            boton_favoritos.pack(pady=10)
             
         thread.Thread(target=self.voice_recognition, daemon=True).start()
             
@@ -130,7 +138,11 @@ class EntornoUsuario():
        
     def ver_informacion_command(self, anime_name):
         anime = self.find_anime(anime_name)
-        self.ventana.after(0, lambda: self.ver_informacion(anime))  
+        if anime is not None:
+            self.ventana.after(0, lambda: self.ver_informacion(anime))  
+        
+        else: 
+            print("No se encontró el anime")
         
     def ver_informacion(self, anime):
         self.threading = False
@@ -181,7 +193,7 @@ class EntornoUsuario():
             user_data[self.nombre_usuario]['animes_favoritos'] = []
 
         if anime in user_data[self.nombre_usuario]['animes_favoritos']:
-            raise ValueError(f"El anime {anime_name} ya está en tus favoritos")
+            self.error_favorite(anime_name)
         else:
             if anime is not None:
                 
@@ -210,7 +222,7 @@ class EntornoUsuario():
             user_data[self.nombre_usuario]['animes_vistos'] = []
 
         if anime in user_data[self.nombre_usuario]['animes_vistos']:
-            raise ValueError(f"El anime {anime_name} ya está en tus vistos")
+            self.error_vistos(anime_name)
         else:
             if anime is not None:
                 
@@ -234,7 +246,20 @@ class EntornoUsuario():
                 return anime
         return None
     
-
+    def error_favorite(self, anime_name):
+        confirmation_window = tk.Toplevel(self.ventana)
+        confirmation_window.title("Error")
+        confirmation_label = tk.Label(confirmation_window, text=f"Ya tienes el anime {anime_name} en favoritos", font=("Arial", 16))
+        confirmation_label.pack(pady=20)
+        confirmation_window.after(3000, confirmation_window.destroy)
+        
+    def error_vistos(self, anime_name):
+        confirmation_window = tk.Toplevel(self.ventana)
+        confirmation_window.title("Error")
+        confirmation_label = tk.Label(confirmation_window, text=f"Ya tienes el anime {anime_name} en vistos", font=("Arial", 16))
+        confirmation_label.pack(pady=20)
+        confirmation_window.after(3000, confirmation_window.destroy)
+        
     def show_confirmation_favourites(self, anime_name):
         confirmation_window = tk.Toplevel(self.ventana)
         confirmation_window.title("Confirmación")
@@ -253,7 +278,7 @@ class EntornoUsuario():
 class InformacionAnime():
     def __init__(self, nombre_usuario, anime):
         self.ventana = tk.Tk()
-        self.ventana.geometry("1000x1000")  # establecemos las dimensiones principales de la pantalla
+        self.ventana.geometry("10000x10000")  # establecemos las dimensiones principales de la pantalla
         self.ventana.title("Your Anime Realm")  # título de mi app
         
         self.nombre_usuario = nombre_usuario
@@ -362,6 +387,10 @@ class InformacionAnime():
                     #Crear un label para la key del personaje
                     label_key_personaje = tk.Label(personaje_frame, text=f"({personaje['key']})", font=("Arial", 12))
                     label_key_personaje.pack()
+
+                    # Crear un botón para marcar al personaje como favorito
+                    boton_favorito = tk.Button(personaje_frame, text="Favorito", command=lambda person=personaje['key']: self.add_to_favorites(person))
+                    boton_favorito.pack()
                     
         thread.Thread(target=self.voice_recognition, daemon=True).start()
                     
@@ -462,7 +491,7 @@ class InformacionAnime():
             user_data[self.nombre_usuario]['personajes_favoritos'] = []
 
         if character in user_data[self.nombre_usuario]['personajes_favoritos']:
-            raise ValueError(f"El personaje {character} ya está en tus favoritos")
+            self.error_favorite(character_name)
         else:
             if character is not None:
                 # Verifica si ya hay 6 o más personajes favoritos
@@ -492,6 +521,13 @@ class InformacionAnime():
         confirmation_label = tk.Label(confirmation_window, text=f"{character_name} ha sido añadido a tus personajes favoritos", font=("Arial", 16))
         confirmation_label.pack(pady=20)
         confirmation_window.after(3000, confirmation_window.destroy)
+        
+    def error_favorite(self, character_name):
+        confirmation_window = tk.Toplevel(self.ventana)
+        confirmation_window.title("Error")
+        confirmation_label = tk.Label(confirmation_window, text=f"Ya tienes el personaje {character_name} en favoritos", font=("Arial", 16))
+        confirmation_label.pack(pady=20)
+        confirmation_window.after(3000, confirmation_window.destroy)
                     
     
                         
@@ -500,7 +536,7 @@ class InformacionAnime():
 class AnimesFavoritos():
     def __init__(self, n):
         self.ventana = tk.Tk()
-        self.ventana.geometry("1000x1000")  # establecemos las dimensiones principales de la pantalla
+        self.ventana.geometry("10000x10000")  # establecemos las dimensiones principales de la pantalla
         self.ventana.title("Your Anime Realm")  # título de mi app
         
         self.nombre_usuario = n
@@ -562,7 +598,7 @@ class AnimesFavoritos():
 
             # Crear un frame para cada anime
             anime_frame = tk.Frame(animes_frame, bg='white')
-            anime_frame.grid(row=i//5, column=i%5, padx=10, pady=10, sticky="nsew")
+            anime_frame.grid(row=i//3, column=i%3, padx=10, pady=10, sticky="nsew")
 
             # Crear un label para la imagen
             label_imagen = tk.Label(anime_frame, image=imagen_anime)
@@ -571,6 +607,10 @@ class AnimesFavoritos():
             # Crear un label para el nombre del anime
             label_nombre = tk.Label(anime_frame, text=anime['nombre'], font=("Arial", 16))
             label_nombre.pack()
+            
+            # Crear un botón para añadir anime a vistos
+            boton_favoritos = tk.Button(anime_frame, text="Eliminar", command=lambda anime=anime['nombre']: self.delete(anime))
+            boton_favoritos.pack(pady=10)
             
         thread.Thread(target=self.voice_recognition, daemon=True).start()
 
@@ -670,7 +710,7 @@ class AnimesFavoritos():
 class PersonajesFavoritos():
     def __init__(self, n):
         self.ventana = tk.Tk()
-        self.ventana.geometry("1000x1000")  # establecemos las dimensiones principales de la pantalla
+        self.ventana.geometry("10000x10000")  # establecemos las dimensiones principales de la pantalla
         self.ventana.title("Your Anime Realm")  # título de mi app
         
         self.nombre_usuario = n
@@ -735,7 +775,7 @@ class PersonajesFavoritos():
 
             # Crear un frame para cada anime
             personaje_frame = tk.Frame(animes_frame, bg='white')
-            personaje_frame.grid(row=i//5, column=i%5, padx=10, pady=10, sticky="nsew")
+            personaje_frame.grid(row=i//3, column=i%3, padx=10, pady=10, sticky="nsew")
 
             # Crear un label para la imagen
             label_imagen = tk.Label(personaje_frame, image=imagen_personaje)
@@ -748,6 +788,10 @@ class PersonajesFavoritos():
             #Crear un label para la key del personaje
             label_key_personaje = tk.Label(personaje_frame, text=f"({personaje['key']})", font=("Arial", 12))
             label_key_personaje.pack()
+            
+             # Crear un botón para marcar al personaje como favorito
+            boton_favorito = tk.Button(personaje_frame, text="Eliminar", command=lambda person=personaje['key']: self.delete(person))
+            boton_favorito.pack()
             
         thread.Thread(target=self.voice_recognition, daemon=True).start()
 
@@ -849,8 +893,8 @@ class PersonajesFavoritos():
         self.ventana.after(0, lambda: self.realidad_aumentada())
         
     def realidad_aumentada(self):
-        self.threading = False
-        print("Finalizando hilo")
+        # self.threading = False
+        # print("Finalizando hilo")
         #saco las rutas de las imagenes de mis personajes favoritos
         images_path = []
         with open('data.json', 'r') as f:
@@ -866,7 +910,7 @@ class PersonajesFavoritos():
 class AnimesVistos():
     def __init__(self, n):
         self.ventana = tk.Tk()
-        self.ventana.geometry("1000x1000")  # establecemos las dimensiones principales de la pantalla
+        self.ventana.geometry("10000x10000")  # establecemos las dimensiones principales de la pantalla
         self.ventana.title("Your Anime Realm")  # título de mi app
         
         self.nombre_usuario = n
@@ -928,7 +972,7 @@ class AnimesVistos():
 
             # Crear un frame para cada anime
             anime_frame = tk.Frame(animes_frame, bg='white')
-            anime_frame.grid(row=i//5, column=i%5, padx=10, pady=10, sticky="nsew")
+            anime_frame.grid(row=i//3, column=i%3, padx=10, pady=10, sticky="nsew")
 
             # Crear un label para la imagen
             label_imagen = tk.Label(anime_frame, image=imagen_anime)
@@ -937,26 +981,104 @@ class AnimesVistos():
             # Crear un label para el nombre del anime
             label_nombre = tk.Label(anime_frame, text=anime['nombre'], font=("Arial", 16))
             label_nombre.pack()
+            
+            # Crear un botón para eliminar anime de vistos
+            boton_favoritos = tk.Button(anime_frame, text="Eliminar", command=lambda anime=anime['nombre']: self.delete(anime))
+            boton_favoritos.pack(pady=10)
 
+        thread.Thread(target=self.voice_recognition, daemon=True).start()
         self.ventana.mainloop()
+        
+    def voice_recognition(self):
+        recognizer = sr.Recognizer()
+        mic = sr.Microphone()
+
+        while self.threading:
+            with mic as source:
+                recognizer.adjust_for_ambient_noise(source)
+                print("Escuchando...")
+                audio = recognizer.listen(source)
+
+            try:
+                command = recognizer.recognize_google(audio, language='es-ES')
+                print(f"Comando escuchado: {command}")
+                words = command.lower().split()
+                if words[0] == "eliminar":
+                    character = " ".join(words[1:])
+                    self.delete(character)
+                    
+                #Scrollear en las distintas
+                elif command.lower() == "página principal":
+                    self.pagina_principal_command(self.nombre_usuario)
+                    
+                elif command.lower() == "animes favoritos":
+                    self.animes_favoritos_command(self.nombre_usuario)
+                    
+                elif command.lower() == "personajes favoritos":
+                    self.personajes_favoritos_command(self.nombre_usuario)
+                
+                    
+            except sr.UnknownValueError:
+                print("No se entendió el comando")
+            except sr.RequestError as e:
+                print(f"Error con el servicio de reconocimiento de voz; {e}")
+                
+    def pagina_principal_command(self, nombre_usuario):
+        self.ventana.after(0, lambda: self.pagina_principal(nombre_usuario))
         
     def pagina_principal(self, nombre_usuario):
         self.threading = False
         print("Finalizando hilo")
         self.ventana.destroy()
         EntornoUsuario(nombre_usuario)
-                
+    
+    def animes_favoritos_command(self, nombre_usuario):
+        self.ventana.after(0, lambda: self.animes_favoritos(nombre_usuario))
+        
     def animes_favoritos(self, nombre_usuario):
         self.threading = False
         print("Finalizando hilo")
         self.ventana.destroy()
         AnimesFavoritos(nombre_usuario)
         
+    def personajes_favoritos_command(self, nombre_usuario):
+        self.ventana.after(0, lambda: self.personajes_favoritos(nombre_usuario))
+        
     def personajes_favoritos(self, nombre_usuario):
         self.threading = False
         print("Finalizando hilo")
         self.ventana.destroy()
         PersonajesFavoritos(nombre_usuario)
+        
+                 
+    def delete(self, anime_name):
+        try:
+            with open('data.json', 'r') as f:
+                user_data = json.load(f)
+        except FileNotFoundError:
+            print("No se encontró el archivo data.json")
+            return
+
+        animes_favoritos = user_data[self.nombre_usuario]['animes_vistos']
+        for anime in animes_favoritos:
+            if anime['nombre'].lower() == anime_name.lower():
+                animes_favoritos.remove(anime)
+                print(f"Anime {anime_name} eliminado de tus vistos.")
+                self.show_confirmation_delete(anime_name)
+                break
+            
+        else:
+            print(f"No se encontró el anime {anime_name} en tus vistos.")
+
+        with open('data.json', 'w') as archivo:
+            json.dump(user_data, archivo, indent=4)
+            
+    def show_confirmation_delete(self, anime_name):
+        confirmation_window = tk.Toplevel(self.ventana)
+        confirmation_window.title("Confirmación")
+        confirmation_label = tk.Label(confirmation_window, text=f"{anime_name} ha sido eliminado de tus animes vistos", font=("Arial", 16))
+        confirmation_label.pack(pady=20)
+        confirmation_window.after(3000, confirmation_window.destroy)
 
     
         

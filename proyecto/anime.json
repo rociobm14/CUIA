@@ -130,7 +130,7 @@
         ]
       },
       {
-        "nombre": "Full Metal Alchemist",
+        "nombre": "FullMetal Alchemist",
         "imagen": "imagenes/fma.jpeg", 
         "descripcion": "La historia sigue a dos hermanos alquimistas, Edward y Alphonse Elric, en su búsqueda para encontrar la Piedra Filosofal después de un intento fallido de resucitar a su madre utilizando la alquimia. Durante el proceso, Edward pierde una pierna y Alphonse su cuerpo entero. Para salvar a su hermano, Edward sacrifica su brazo para unir el alma de Alphonse a una armadura. Juntos, los hermanos se embarcan en un viaje para recuperar sus cuerpos y descubrir los secretos detrás de la Piedra Filosofal.",
         "personajes": [

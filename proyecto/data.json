@@ -3,14 +3,146 @@
         {
             "nombre_usuario": "rocio",
             "contrasena": "holaquetal"
+        },
+        {
+            "nombre_usuario": "Manolo",
+            "contrasena": "akazaidiota"
         }
     ],
     "rocio": {
         "animes_favoritos": [
             {
+                "nombre": "Kimetsu no Yaiba",
+                "imagen": "imagenes/kimetsu.jpeg",
+                "descripcion": "La historia sigue a Tanjiro Kamado, un joven bondadoso y dedicado que vive en las monta\u00f1as con su madre y sus hermanos menores. Un d\u00eda, su vida pac\u00edfica se ve destrozada cuando su familia es asesinada por demonios, y su \u00fanica hermana sobreviviente, Nezuko, es convertida en un demonio. Determinado a vengar la muerte de su familia y encontrar una cura para Nezuko, Tanjiro se une a los Cazadores de Demonios y comienza su viaje para eliminar a los demonios y encontrar una manera de devolver a Nezuko su humanidad.",
+                "personajes": [
+                    {
+                        "key": "Tanjiro",
+                        "nombre": "Tanjiro Kamado",
+                        "imagen": "imagenes/tanjiro.jpeg"
+                    },
+                    {
+                        "key": "Nezuko",
+                        "nombre": "Nezuko Kamado",
+                        "imagen": "imagenes/nezuko.jpeg"
+                    },
+                    {
+                        "key": "Zenitsu",
+                        "nombre": "Zenitsu Agatsuma",
+                        "imagen": "imagenes/zenitsu.jpeg"
+                    },
+                    {
+                        "key": "Inosuke",
+                        "nombre": "Inosuke Hashibira",
+                        "imagen": "imagenes/inosuke.jpeg"
+                    },
+                    {
+                        "key": "Rengoku",
+                        "nombre": "Kyojuro Rengoku",
+                        "imagen": "imagenes/rengoku.jpeg"
+                    }
+                ]
+            },
+            {
+                "nombre": "FullMetal Alchemist",
+                "imagen": "imagenes/fma.jpeg",
+                "descripcion": "La historia sigue a dos hermanos alquimistas, Edward y Alphonse Elric, en su b\u00fasqueda para encontrar la Piedra Filosofal despu\u00e9s de un intento fallido de resucitar a su madre utilizando la alquimia. Durante el proceso, Edward pierde una pierna y Alphonse su cuerpo entero. Para salvar a su hermano, Edward sacrifica su brazo para unir el alma de Alphonse a una armadura. Juntos, los hermanos se embarcan en un viaje para recuperar sus cuerpos y descubrir los secretos detr\u00e1s de la Piedra Filosofal.",
+                "personajes": [
+                    {
+                        "key": "Edward",
+                        "nombre": "Edward Elric",
+                        "imagen": "imagenes/edward.jpeg"
+                    },
+                    {
+                        "key": "Elric",
+                        "nombre": "Alphonse Elric",
+                        "imagen": "imagenes/alphonse.jpeg"
+                    },
+                    {
+                        "key": "Mustang",
+                        "nombre": "Roy Mustang",
+                        "imagen": "imagenes/mustang.jpeg"
+                    },
+                    {
+                        "key": "Rockbell",
+                        "nombre": "Winry Rockbell",
+                        "imagen": "imagenes/winry.jpeg"
+                    },
+                    {
+                        "key": "Scar",
+                        "nombre": "Scar",
+                        "imagen": "imagenes/scar.jpeg"
+                    }
+                ]
+            },
+            {
+                "nombre": "Jujutsu Kaisen",
+                "imagen": "imagenes/jujutsu.jpeg",
+                "descripcion": "Yuji Itadori es un estudiante de secundaria con una fuerza f\u00edsica inusual. Vive una vida normal hasta que encuentra un dedo podrido en su escuela, que resulta ser un objeto maldito muy poderoso. Cuando \u00e9l y sus amigos abren el sello del objeto, liberan una maldici\u00f3n que los ataca. Para proteger a sus amigos, Yuji decide comer el dedo, lo que lo convierte en el anfitri\u00f3n de Ryomen Sukuna, una maldici\u00f3n extremadamente poderosa y malvada.",
+                "personajes": [
+                    {
+                        "key": "Yuji",
+                        "nombre": "Yuji Itadori",
+                        "imagen": "imagenes/itadori.jpeg"
+                    },
+                    {
+                        "key": "Satoru",
+                        "nombre": "Satoru Gojo",
+                        "imagen": "imagenes/gojo.jpeg"
+                    },
+                    {
+                        "key": "Megumi",
+                        "nombre": "Megumi Fushiguro",
+                        "imagen": "imagenes/megumi.jpeg"
+                    },
+                    {
+                        "key": "Nobara",
+                        "nombre": "Nobara Kugisaki",
+                        "imagen": "imagenes/nobara.jpeg"
+                    },
+                    {
+                        "key": "Suguru",
+                        "nombre": "Suguru Geto",
+                        "imagen": "imagenes/suguru.jpeg"
+                    }
+                ]
+            },
+            {
+                "nombre": "Dragon Ball",
+                "imagen": "imagenes/dragonball.jpeg",
+                "descripcion": "La historia sigue a Son Goku, un ni\u00f1o con cola de mono que vive en las monta\u00f1as y posee una fuerza y habilidades sobrehumanas. Goku se embarca en una aventura para encontrar las legendarias Bolas de Drag\u00f3n, siete esferas m\u00e1gicas que, cuando se re\u00fanen, pueden conceder cualquier deseo. A lo largo de su viaje, Goku se enfrenta a poderosos enemigos y se convierte en uno de los guerreros m\u00e1s fuertes del universo.",
+                "personajes": [
+                    {
+                        "key": "Goku",
+                        "nombre": "Son Goku",
+                        "imagen": "imagenes/goku.jpeg"
+                    },
+                    {
+                        "key": "Vegeta",
+                        "nombre": "Vegeta",
+                        "imagen": "imagenes/vegeta.jpeg"
+                    },
+                    {
+                        "key": "Gohan",
+                        "nombre": "Son Gohan",
+                        "imagen": "imagenes/gohan.jpeg"
+                    },
+                    {
+                        "key": "Piccolo",
+                        "nombre": "Piccolo",
+                        "imagen": "imagenes/piccolo.jpeg"
+                    },
+                    {
+                        "key": "Bulma",
+                        "nombre": "Bulma",
+                        "imagen": "imagenes/bulma.jpeg"
+                    }
+                ]
+            },
+            {
                 "nombre": "Neon Genesis Evangelion",
                 "imagen": "imagenes/evangelion.jpeg",
-                "wikipedia_url": "https://es.wikipedia.org/wiki/Neon_Genesis_Evangelion#Argumento",
+                "descripcion": "La serie est\u00e1 ambientada en un mundo posapocal\u00edptico donde una organizaci\u00f3n paramilitar llamada NERV protege a la humanidad de los ataques de seres misteriosos y gigantescos llamados \u00c1ngeles. La historia sigue a Shinji Ikari, un adolescente reacio que es reclutado por su padre, Gendo Ikari, para pilotar un gigantesco robot bio-mec\u00e1nico llamado Evangelion con el fin de combatir a los \u00c1ngeles.",
                 "personajes": [
                     {
                         "key": "Shinji",
@@ -21,6 +153,21 @@
                         "key": "Ayanami",
                         "nombre": "Rei Ayanami",
                         "imagen": "imagenes/rei.jpeg"
+                    },
+                    {
+                        "key": "Langley",
+                        "nombre": "Asuka Langley Soryu",
+                        "imagen": "imagenes/asuka.jpeg"
+                    },
+                    {
+                        "key": "Katsuragi",
+                        "nombre": "Misato Katsuragi",
+                        "imagen": "imagenes/misato.jpeg"
+                    },
+                    {
+                        "key": "Gendo",
+                        "nombre": "Gendo Ikari",
+                        "imagen": "imagenes/gendo.jpeg"
                     }
                 ]
             },
@@ -38,6 +185,21 @@
                         "key": "Ackerman",
                         "nombre": "Mikasa Ackerman",
                         "imagen": "imagenes/mikasa.jpeg"
+                    },
+                    {
+                        "key": "Levy",
+                        "nombre": "Levi Ackerman",
+                        "imagen": "imagenes/levi.jpeg"
+                    },
+                    {
+                        "key": "Armin",
+                        "nombre": "Armin Arlert",
+                        "imagen": "imagenes/armin.jpeg"
+                    },
+                    {
+                        "key": "Historia",
+                        "nombre": "Historia Reiss",
+                        "imagen": "imagenes/historia.jpeg"
                     }
                 ]
             }
@@ -54,47 +216,95 @@
                 "imagen": "imagenes/tanjiro.jpeg"
             },
             {
-                "key": "Nezuko",
-                "nombre": "Nezuko Kamado",
-                "imagen": "imagenes/nezuko.jpeg"
-            },
-            {
-                "key": "Light",
-                "nombre": "Light Yagami",
-                "imagen": "imagenes/light.jpeg"
-            },
-            {
                 "key": "Eren",
                 "nombre": "Eren Jaeger",
                 "imagen": "imagenes/eren.jpeg"
             },
             {
-                "key": "Itachi",
-                "nombre": "Itachi Uchiha",
-                "imagen": "imagenes/itachi.jpeg"
+                "key": "Ayanami",
+                "nombre": "Rei Ayanami",
+                "imagen": "imagenes/rei.jpeg"
+            },
+            {
+                "key": "Kaneki",
+                "nombre": "Ken Kaneki",
+                "imagen": "imagenes/kaneki.jpeg"
+            },
+            {
+                "key": "Near",
+                "nombre": "Near",
+                "imagen": "imagenes/near.jpeg"
             }
         ],
         "animes_vistos": [
             {
-                "nombre": "Neon Genesis Evangelion",
-                "imagen": "imagenes/evangelion.jpeg",
-                "wikipedia_url": "https://es.wikipedia.org/wiki/Neon_Genesis_Evangelion#Argumento",
+                "nombre": "Death Note",
+                "imagen": "imagenes/deathnote.jpeg",
+                "descripcion": "La historia sigue a Light Yagami, un estudiante de secundaria extremadamente inteligente y aburrido con el mundo que un d\u00eda encuentra un cuaderno llamado 'Death Note'. Este cuaderno tiene el poder de matar a cualquier persona cuyo nombre y rostro sean escritos en \u00e9l, siempre y cuando el escritor tenga la imagen de la v\u00edctima en su mente al escribir. Light decide usar el Death Note para 'limpiar' el mundo de criminales y crear un nuevo orden mundial, adoptando el alias de 'Kira'.",
                 "personajes": [
                     {
-                        "key": "Shinji",
-                        "nombre": "Shinji Ikari",
-                        "imagen": "imagenes/shinji.jpeg"
+                        "key": "Light",
+                        "nombre": "Light Yagami",
+                        "imagen": "imagenes/light.jpeg"
                     },
                     {
-                        "key": "Ayanami",
-                        "nombre": "Rei Ayanami",
-                        "imagen": "imagenes/rei.jpeg"
+                        "key": "Law",
+                        "nombre": "Lawliet L",
+                        "imagen": "imagenes/lawliet.jpeg"
+                    },
+                    {
+                        "key": "Misa",
+                        "nombre": "Misa Amane",
+                        "imagen": "imagenes/misa.jpeg"
+                    },
+                    {
+                        "key": "Ryuk",
+                        "nombre": "Ryuk",
+                        "imagen": "imagenes/ryuk.jpeg"
+                    },
+                    {
+                        "key": "Near",
+                        "nombre": "Near",
+                        "imagen": "imagenes/near.jpeg"
+                    }
+                ]
+            },
+            {
+                "nombre": "One Piece",
+                "imagen": "imagenes/onepiece.jpeg",
+                "descripcion": "La historia comienza con Monkey D. Luffy, un joven que sue\u00f1a con convertirse en el Rey de los Piratas. Inspirado por su h\u00e9roe de la infancia, el pirata Shanks, Luffy parte de su aldea natal en el East Blue para formar su propia tripulaci\u00f3n y encontrar el One Piece. Luffy posee habilidades el\u00e1sticas debido a que comi\u00f3 una Fruta del Diablo llamada Gomu Gomu no Mi.",
+                "personajes": [
+                    {
+                        "key": "Luffy",
+                        "nombre": "Monkey D. Luffy",
+                        "imagen": "imagenes/luffy.jpeg"
+                    },
+                    {
+                        "key": "Zoro",
+                        "nombre": "Roronoa Zoro",
+                        "imagen": "imagenes/zoro.jpeg"
+                    },
+                    {
+                        "key": "Nami",
+                        "nombre": "Nami",
+                        "imagen": "imagenes/nami.jpeg"
+                    },
+                    {
+                        "key": "Sanji",
+                        "nombre": "Sanji",
+                        "imagen": "imagenes/sanji.jpeg"
+                    },
+                    {
+                        "key": "Chopper",
+                        "nombre": "Tony Tony Chopper",
+                        "imagen": "imagenes/chopper.jpeg"
                     }
                 ]
             },
             {
                 "nombre": "Naruto",
                 "imagen": "imagenes/naruto.jpeg",
+                "descripcion": "La historia se centra en Naruto Uzumaki, un joven ninja de la Aldea Oculta de la Hoja (Konoha). Naruto es un hu\u00e9rfano que lleva dentro de \u00e9l al Zorro de Nueve Colas (Kurama), un demonio que atac\u00f3 la aldea a\u00f1os atr\u00e1s y fue sellado dentro de \u00e9l por su padre, el Cuarto Hokage, para salvar la aldea. Debido a esto, Naruto ha sido evitado y despreciado por los aldeanos durante toda su vida.",
                 "personajes": [
                     {
                         "key": "Naruto",
@@ -105,6 +315,155 @@
                         "key": "Itachi",
                         "nombre": "Itachi Uchiha",
                         "imagen": "imagenes/itachi.jpeg"
+                    },
+                    {
+                        "key": "Sasuke",
+                        "nombre": "Sasuke Uchiha",
+                        "imagen": "imagenes/sasuke.jpeg"
+                    },
+                    {
+                        "key": "Kakashi",
+                        "nombre": "Kakashi Hatake",
+                        "imagen": "imagenes/kakashi.jpeg"
+                    },
+                    {
+                        "key": "Sakura",
+                        "nombre": "Sakura Haruno",
+                        "imagen": "imagenes/sakura.jpeg"
+                    }
+                ]
+            }
+        ]
+    },
+    "Manolo": {
+        "personajes_favoritos": [
+            {
+                "key": "Rengoku",
+                "nombre": "Kyojuro Rengoku",
+                "imagen": "imagenes/rengoku.jpeg"
+            },
+            {
+                "key": "Vegeta",
+                "nombre": "Vegeta",
+                "imagen": "imagenes/vegeta.jpeg"
+            },
+            {
+                "key": "Chopper",
+                "nombre": "Tony Tony Chopper",
+                "imagen": "imagenes/chopper.jpeg"
+            },
+            {
+                "key": "Inosuke",
+                "nombre": "Inosuke Hashibira",
+                "imagen": "imagenes/inosuke.jpeg"
+            },
+            {
+                "key": "Kaneki",
+                "nombre": "Ken Kaneki",
+                "imagen": "imagenes/kaneki.jpeg"
+            },
+            {
+                "key": "Suzuya",
+                "nombre": "Juuzou Suzuya",
+                "imagen": "imagenes/suzuya.jpeg"
+            }
+        ],
+        "animes_favoritos": [
+            {
+                "nombre": "Kimetsu no Yaiba",
+                "imagen": "imagenes/kimetsu.jpeg",
+                "descripcion": "La historia sigue a Tanjiro Kamado, un joven bondadoso y dedicado que vive en las monta\u00f1as con su madre y sus hermanos menores. Un d\u00eda, su vida pac\u00edfica se ve destrozada cuando su familia es asesinada por demonios, y su \u00fanica hermana sobreviviente, Nezuko, es convertida en un demonio. Determinado a vengar la muerte de su familia y encontrar una cura para Nezuko, Tanjiro se une a los Cazadores de Demonios y comienza su viaje para eliminar a los demonios y encontrar una manera de devolver a Nezuko su humanidad.",
+                "personajes": [
+                    {
+                        "key": "Tanjiro",
+                        "nombre": "Tanjiro Kamado",
+                        "imagen": "imagenes/tanjiro.jpeg"
+                    },
+                    {
+                        "key": "Nezuko",
+                        "nombre": "Nezuko Kamado",
+                        "imagen": "imagenes/nezuko.jpeg"
+                    },
+                    {
+                        "key": "Zenitsu",
+                        "nombre": "Zenitsu Agatsuma",
+                        "imagen": "imagenes/zenitsu.jpeg"
+                    },
+                    {
+                        "key": "Inosuke",
+                        "nombre": "Inosuke Hashibira",
+                        "imagen": "imagenes/inosuke.jpeg"
+                    },
+                    {
+                        "key": "Rengoku",
+                        "nombre": "Kyojuro Rengoku",
+                        "imagen": "imagenes/rengoku.jpeg"
+                    }
+                ]
+            }
+        ],
+        "animes_vistos": [
+            {
+                "nombre": "Kimetsu no Yaiba",
+                "imagen": "imagenes/kimetsu.jpeg",
+                "descripcion": "La historia sigue a Tanjiro Kamado, un joven bondadoso y dedicado que vive en las monta\u00f1as con su madre y sus hermanos menores. Un d\u00eda, su vida pac\u00edfica se ve destrozada cuando su familia es asesinada por demonios, y su \u00fanica hermana sobreviviente, Nezuko, es convertida en un demonio. Determinado a vengar la muerte de su familia y encontrar una cura para Nezuko, Tanjiro se une a los Cazadores de Demonios y comienza su viaje para eliminar a los demonios y encontrar una manera de devolver a Nezuko su humanidad.",
+                "personajes": [
+                    {
+                        "key": "Tanjiro",
+                        "nombre": "Tanjiro Kamado",
+                        "imagen": "imagenes/tanjiro.jpeg"
+                    },
+                    {
+                        "key": "Nezuko",
+                        "nombre": "Nezuko Kamado",
+                        "imagen": "imagenes/nezuko.jpeg"
+                    },
+                    {
+                        "key": "Zenitsu",
+                        "nombre": "Zenitsu Agatsuma",
+                        "imagen": "imagenes/zenitsu.jpeg"
+                    },
+                    {
+                        "key": "Inosuke",
+                        "nombre": "Inosuke Hashibira",
+                        "imagen": "imagenes/inosuke.jpeg"
+                    },
+                    {
+                        "key": "Rengoku",
+                        "nombre": "Kyojuro Rengoku",
+                        "imagen": "imagenes/rengoku.jpeg"
+                    }
+                ]
+            },
+            {
+                "nombre": "Naruto",
+                "imagen": "imagenes/naruto.jpeg",
+                "descripcion": "La historia se centra en Naruto Uzumaki, un joven ninja de la Aldea Oculta de la Hoja (Konoha). Naruto es un hu\u00e9rfano que lleva dentro de \u00e9l al Zorro de Nueve Colas (Kurama), un demonio que atac\u00f3 la aldea a\u00f1os atr\u00e1s y fue sellado dentro de \u00e9l por su padre, el Cuarto Hokage, para salvar la aldea. Debido a esto, Naruto ha sido evitado y despreciado por los aldeanos durante toda su vida.",
+                "personajes": [
+                    {
+                        "key": "Naruto",
+                        "nombre": "Naruto Uzumaki",
+                        "imagen": "imagenes/naru.jpeg"
+                    },
+                    {
+                        "key": "Itachi",
+                        "nombre": "Itachi Uchiha",
+                        "imagen": "imagenes/itachi.jpeg"
+                    },
+                    {
+                        "key": "Sasuke",
+                        "nombre": "Sasuke Uchiha",
+                        "imagen": "imagenes/sasuke.jpeg"
+                    },
+                    {
+                        "key": "Kakashi",
+                        "nombre": "Kakashi Hatake",
+                        "imagen": "imagenes/kakashi.jpeg"
+                    },
+                    {
+                        "key": "Sakura",
+                        "nombre": "Sakura Haruno",
+                        "imagen": "imagenes/sakura.jpeg"
                     }
                 ]
             }
